@@ -1,0 +1,31 @@
+body{
+    height: 200vh;
+    margin-top: calc(100px + 2em);
+
+}
+
+nav{
+    background-color: wheat;
+    width: 100vw;
+    height: 100px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    gap: 2em;
+
+    position: fixed;
+    top: 0;
+
+}
+
+nav > a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+nav > a > i{
+    font-size: 2.2em;    
+}
