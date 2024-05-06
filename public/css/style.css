@@ -1,9 +1,25 @@
+
+
 body {
-    background-color: beige;
+    font-family: "Inter", sans-serif;
+    background-color: #151E26;
     height: 100vh;
     width: 100vw;
     margin: 0;
 }
+
+#bimg   {
+    background: url(/img/pizza.png) no-repeat 0 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    background-size: 100vw;
+    left: 0;
+    right: 0;
+
+
+
+   }
 
 .flex-row-center-center {
     display: flex;
@@ -26,5 +42,118 @@ body {
     border-radius: 1em;
     padding: 1.5em;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.base-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+
+}
+
+nav {
+
+    width: 20vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 100px;
+    position:static;
+
+}
+
+nav > img {
+    background-color: #151E26;
+    width: 90%;
+    border-radius: 100%;    
+    margin: 0 1em 1em 1em ;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    /* line-height: 2em; */
+}
+
+
+
+.button {
+    border: solid 2px #FB8A22;
+    border-radius: 2em;
+    text-align: center;
+    color: black;
+    background-color: #ffffff;
+    letter-spacing: 0.7px;
+    width: 90%;
+    padding: 0.5em;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    
+
+}
+
+ul {
+    letter-spacing: 0.7px;
+    height: 100%;
+    width: 70%;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+li {
+    text-align: left;
+    margin-bottom: 0.5em;
+}
+
+main{
+    display:  flex;
+    flex-direction: column;   
+    height: 100vh;
+    width: 80vw;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 2em;
+}
+
+.search-bar {   
+
+    width: 100%;
+
+}
+
+.background-border {
+    padding: 10px;
+    background-color: #2A3C4C;
+    width: 60%;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    
+}
+
+.search-bar>form>input {
+    width: 100%;
+    text-align: left;
+    margin:  0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+
+.welcome-text {
+    margin: 1.2em;
+    font-size: 4vw;
+    color: #ffffff;
 }
 
