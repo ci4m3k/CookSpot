@@ -1,0 +1,76 @@
+section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2em;
+    padding: 2em;
+}
+
+.posts>div{
+    padding: 10px;
+    background-color: #2A3C4C;
+    border-radius: 2em;
+    display: flex;
+    align-items: top;
+    max-width: 1000px;
+    min-width: 400px;
+
+}
+
+.posts>div>img {
+    width: 40%;
+    border-radius: 2em;
+    object-fit: cover;
+}
+
+.posts>div>div {
+    width: 60%;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.post-desc>h1:first-child {
+    font-size: 2em;
+    color: #FB8A22;
+    
+}
+
+.post-desc>h1 {
+    font-size: 0.8em;
+    color: #D1D1D1;
+    margin: 0;
+}
+
+.post-desc>p{
+    font-size: 1em;
+    color: #D1D1D1;
+    word-wrap: break-word;
+    
+}
+
+.post-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.post-icons > div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.post-icons > div >span {
+    font-size: 20px;
+    color: #fff;
+}
+
+.post-icons > div:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+}
+
+.material-symbols-outlined {
+    color: #FB8A22;
+    font-size: 30px; /* Adjust the icon size as needed */
+    margin-right: 5px; /* Adjust the spacing between icon and text */
+}

@@ -1,6 +1,7 @@
 
 
 body {
+
     font-family: "Inter", sans-serif;
     background-color: #151E26;
     height: 100vh;
@@ -11,9 +12,12 @@ body {
 #bimg   {
     background: url(/img/pizza.png) no-repeat 0 100%;
     background-repeat: no-repeat;
-    background-position: top center;
     background-attachment: fixed;
+    background-position: top center; 
     background-size: 100vw;
+    /* background-position: top left; 
+    background-size: 900vw; */
+
     left: 0;
     right: 0;
 
@@ -21,28 +25,6 @@ body {
 
    }
 
-.flex-row-center-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.flex-column-center-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.container {
-    background-color: aqua;
-    border-radius: 1em;
-    padding: 1.5em;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-}
 
 .base-container{
     display: flex;
@@ -61,7 +43,8 @@ nav {
     justify-content: flex-start;
     align-items: center;
     min-width: 100px;
-    position:static;
+    position:fixed;
+    z-index: 100;
 
 }
 
@@ -95,8 +78,9 @@ a {
     font-size: 15px;
     line-height: 18px;
     
-
 }
+
+
 
 ul {
     letter-spacing: 0.7px;
@@ -113,13 +97,14 @@ li {
 }
 
 main{
-    display:  flex;
+    display: flex;
     flex-direction: column;   
     height: 100vh;
     width: 80vw;
+    padding-left: 20vw;
 }
 
-header{
+.header{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -156,4 +141,5 @@ header{
     font-size: 4vw;
     color: #ffffff;
 }
+
 
