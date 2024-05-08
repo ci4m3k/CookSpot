@@ -20,6 +20,7 @@
     width: 60%;
     margin: 0.3em;
 
+
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -45,6 +46,7 @@ form{
 }
 
 form > a {
+    text-decoration: none;
     text-align: center;
     width: 40%;
     font-size: 7 px;
@@ -80,3 +82,20 @@ img {
     width: 50%;
 }
 
+
+@media screen and (max-width: 700px) {
+    
+    .login-container {
+        flex-direction: column;
+        height: 90vh;
+        width: 90vw;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    img {
+        width: 60%;
+    }
+}
