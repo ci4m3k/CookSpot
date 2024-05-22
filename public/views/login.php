@@ -27,9 +27,19 @@
             
             <img src="/img/logo3.png" alt="logo alt">
 
-            <form>
-                <input type="email" placeholder="email" class="input-text">
-                <input type="password" placeholder="password" class="input-text">
+            <form action="login" method="POST">
+                <span class="messages">
+                    <?php
+                        if(isset($messages)){
+                            foreach($messages as $message) {
+                                echo $message;
+                            }
+                        }
+                    ?>
+
+                </span>
+                <input name="email" type="text" placeholder="email" class="input-text">
+                <input name="password" type="password" placeholder="password" class="input-text">
                 <button type="submit" class="input-text">Login</button>
                 <a href="#"> Don't have an account? <span>Create account</span></a>
 

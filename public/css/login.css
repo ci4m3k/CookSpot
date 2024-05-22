@@ -45,6 +45,15 @@ form{
     align-items: center;
 }
 
+.messages {
+    text-decoration: none;
+    text-align: center;
+    width: 80%;
+    font-size: 7 px;
+    color: #ff2100;
+    padding: 7px;
+}
+
 form > a {
     text-decoration: none;
     text-align: center;
