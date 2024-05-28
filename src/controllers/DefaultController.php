@@ -17,6 +17,11 @@ class DefaultController extends AppController {
 
     }
 
+    public function postpage() {
+        $this -> render('post-page');
+
+    }
+
     public function createAccount() {
         $this -> render('createAccount');
     }
