@@ -14,37 +14,37 @@ class User
     }
 
     // Getter for email
-    public function getEmail()
+    public function getEmail() :string
     {
         return $this->email;
     }
 
     // Getter for password
-    public function getPassword()
+    public function getPassword() :string
     {
         return $this->password;
     }
 
     // Getter for username
-    public function getUsername()
+    public function getUsername() :string
     {
         return $this->username;
     }
 
     // Setter for email
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
 
     // Setter for password
-    public function setPassword($password)
+    public function setPassword(string $password)
     {
         $this->password = $password;
     }
 
     // Setter for username
-    public function setUsername($username)
+    public function setUsername(string $username)
     {
         $this->username = $username;
     }
