@@ -25,6 +25,7 @@
     margin-left: 1em;
     display: flex;
     flex-direction: column;
+    font-size: 20px;
 }
 
 .post-icons div {
@@ -84,6 +85,7 @@
 .post-desc>p{
     font-size: 1em;
     color: #D1D1D1;
+    white-space: preserve-breaks;
 }
 
 .stars {
@@ -119,6 +121,7 @@ p.date {
     .post-icons {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        font-size: 17px;
     }
 
     .place-holder {
