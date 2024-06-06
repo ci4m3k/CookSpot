@@ -6,15 +6,26 @@ class Post
     private $ingredients;
     private $recipe;
     private $image;
+    private $prep_time;
+    private $difficulty;
+    private $number_of_servings;
+    private $date;
+
 
     // Constructor
-    public function __construct(string $title, string $description, string $ingredients, string $recipe, string $image)
+    public function __construct(string $title, string $description, string $ingredients, string $recipe, 
+                                string $image, string $prep_time, string $difficulty, string $number_of_servings)
     {
+        date_default_timezone_set('Europe/Warsaw');
         $this->title = $title;
         $this->description = $description;
         $this->ingredients = $ingredients;
         $this->recipe = $recipe;
         $this->image = $image;
+        $this->prep_time = $prep_time;
+        $this->difficulty = $difficulty;
+        $this->number_of_servings = $number_of_servings;
+        $this->date = date('d-m-Y');
     }
 
     // Getter for title
@@ -76,5 +87,51 @@ class Post
     {
         $this->image = $image;
     }
+
+
+    // Getter and Setter for prep_time
+    public function getPrepTime():string
+    {
+        return $this->prep_time;
+    }
+
+    public function setPrepTime(string $prep_time)
+    {
+        $this->prep_time = $prep_time;
+    }
+
+    // Getter and Setter for difficulty
+    public function getDifficulty():string
+    {
+        return $this->difficulty;
+    }
+
+    public function setDifficulty(string $difficulty)
+    {
+        $this->difficulty = $difficulty;
+    }
+
+    // Getter and Setter for number_of_servings
+    public function getNumberOfServings():string
+    {
+        return $this->number_of_servings;
+    }
+
+    public function setNumberOfServings(string $number_of_servings)
+    {
+        $this->number_of_servings = $number_of_servings;
+    }
+
+    // Getter and Setter for date
+    public function getDate():string
+    {
+        return $this->date;
+    }
+
+    public function setDate(string $date)
+    {
+        $this->date = $date;
+    }
 }
+
 ?>

@@ -51,6 +51,15 @@ button.input-text {
     
 }
 
+.lists{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    grid-gap: 2em;
+    align-items: center;
+    justify-items: center;
+}
+
 
 
 @media screen and (max-width: 1200px) {
@@ -58,6 +67,14 @@ button.input-text {
     button.input-text {
         width: calc(50% + 19px);
         
+    }
+
+    .lists{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-gap: unset;
+    width: 60%;
     }
 
 }
@@ -68,6 +85,10 @@ button.input-text {
         width: calc(100% + 19px);
         
     }
+    .lists{
+        width: 100%;
+
+        }
     
 
 }

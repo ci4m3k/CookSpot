@@ -75,6 +75,58 @@
                 <textarea name="ingredients" rows="10" placeholder="ingredients"></textarea>
                 <textarea name="recipe" rows="10"  placeholder="recipe"></textarea>
                 <input type="file" name="image" class="input-text" >
+
+                <div class="lists">
+                    <select name="difficulty" class="input-text">
+                        <option value="empty">Dificulty level</option>
+                        <option value="easy">easy</option>
+                        <option value="medium">medium</option>
+                        <option value="hard">hard</option>
+                    </select>
+
+                    <select name="prep_time" class="input-text">
+                        <option value="empty">Preparation time</option>
+                        <option value="5min">5 minutes</option>
+                        <option value="10min">10 minutes</option>
+                        <option value="15min">15 minutes</option>
+                        <option value="20min">20 minutes</option>
+                        <option value="30min">30 minutes</option>
+                        <option value="45min">45 minutes</option>
+                        <option value="1h">1 hour</option>
+                        <option value="1,5h">1 hour 30 minutes</option>
+                        <option value="2h">2 hours</option>
+                        <option value="2,5h">2 hours 30 minutes</option>
+                        <option value="3h">3 hours</option>
+                        <option value="<3h">more than 3 hours</option>
+                    </select>
+
+                    <select name="number_of_servings"  class="input-text">
+                        <option value="empty" >Number of servings </option>
+                        <option value="1" >For 1 </option>
+                        <option value="1" >For 2 </option>
+                        <option value="1" >For 3 </option>
+                        <option value="1" >For 4 </option>
+                        <option value="1" >For 5 </option>
+                        <option value="1" >For 6 </option>
+                        <option value="1" >For 7 </option>
+                        <option value="1" >For 8 </option>
+                        <option value="1" >For 9 </option>
+                        <option value="1" >For 10 </option>
+                        <option value="1" >For 11 </option>
+                        <option value="1" >For 12 </option>
+                        <option value="1" >For 13 </option>
+                        <option value="1" >For 14 </option>
+                        <option value="1" >For 15 </option>
+                        <option value="1" >For 16 </option>
+                        <option value="1" >For 17 </option>
+                        <option value="1" >For 18 </option>
+                        <option value="1" >For 19 </option>
+                        <option value="1" >For 20 </option>
+                    </select>
+
+
+                </div>
+            
                 <button type="submit" class="input-text"> Submit </button>
 
 

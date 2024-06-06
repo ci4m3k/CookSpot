@@ -12,7 +12,6 @@ class PostController extends AppController
     private $message = [];
     public function addpost()
     {   
-
         if ($this->isPost() && is_uploaded_file($_FILES['image']['tmp_name']) && $this->validate($_FILES['image'])) {
             move_uploaded_file(
                 $_FILES['image']['tmp_name'], 
@@ -20,7 +19,8 @@ class PostController extends AppController
             );
 
             //TODO add to database
-            $new_post = new Post($_POST['title'], $_POST['description'], $_POST['ingredients'], $_POST['recipe'], $_FILES['image']['name']);
+            $new_post = new Post($_POST['title'], $_POST['description'], $_POST['ingredients'], $_POST['recipe'], $_FILES['image']['name'], 
+                                $_POST['prep_time'], $_POST['difficulty'],$_POST['number_of_servings']);
 
             return $this->render('post-page', ['messages' => $this->message, 'post' => $new_post]);
         }
@@ -30,6 +30,7 @@ class PostController extends AppController
 
     private function validate(array $file): bool
     {
+
         if ($file['size'] > self::MAX_FILE_SIZE) {
             $this->message[] = 'File is too large for destination file system.';
             return false;
@@ -39,6 +40,9 @@ class PostController extends AppController
             $this->message[] = 'File type is not supported.';
             return false;
         }
+        
+
+
         return true;
     }
 
