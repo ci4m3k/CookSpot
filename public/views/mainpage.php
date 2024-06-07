@@ -67,7 +67,7 @@
             <section class="posts">
                 <?php foreach($posts as $post): ?>
                 <div id="post-1" > 
-                    <img src="/img/pizza.jpg" alt="post image">
+                    <img src="../public/uploads/<?= $post->getImage() ?>" alt="post image">
                     <div>
                         <div class="post-desc">
                             <h1> <?= $post->getTitle() ?> </h1>

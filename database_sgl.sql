@@ -4,7 +4,7 @@ CREATE TABLE "users" (
 	"id_role" int NOT NULL DEFAULT 1,
 	"email" varchar(100) NOT NULL,
 	"password" varchar(100) NOT NULL,
-	"login" varchar(50) NOT NULL,
+	"username" varchar(50) NOT NULL,
 	PRIMARY KEY("id_user")
 );
 
@@ -31,13 +31,14 @@ CREATE TABLE "posts" (
 	"recipe" text NOT NULL,
 	"image" varchar(255) NOT NULL,
 	"preparation_time" varchar(20) NOT NULL,
-	"dificulty" int NOT NULL,
+	"dificulty" varchar(10) NOT NULL,
 	"servings_number" int NOT NULL,
-	"created_at" timestamp NOT NULL,
+	"created_at" varchar(20) NOT NULL,
 	"total_score" int NOT NULL DEFAULT 0,
 	"total_reviews" int NOT NULL DEFAULT 0,
 	PRIMARY KEY("id_post")
 );
+
 
 CREATE TABLE "rating" (
 	"id_user" int NOT NULL,

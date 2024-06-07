@@ -12,6 +12,7 @@ section {
     border-radius: 2em;
     display: flex;
     align-items: top;
+    max-height: 300px;
 
 
 }
