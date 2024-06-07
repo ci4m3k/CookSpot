@@ -14,7 +14,7 @@ class Post
 
     // Constructor
     public function __construct(string $title, string $description, string $ingredients, string $recipe, 
-                                string $image, string $prep_time, string $difficulty, string $number_of_servings)
+                                string $image, string $prep_time, string $difficulty, int $number_of_servings)
     {
         date_default_timezone_set('Europe/Warsaw');
         $this->title = $title;
@@ -117,7 +117,7 @@ class Post
         return $this->number_of_servings;
     }
 
-    public function setNumberOfServings(string $number_of_servings)
+    public function setNumberOfServings(int $number_of_servings)
     {
         $this->number_of_servings = $number_of_servings;
     }

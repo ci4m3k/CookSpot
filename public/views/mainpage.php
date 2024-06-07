@@ -65,7 +65,43 @@
         
 
             <section class="posts">
+                <?php foreach($posts as $post): ?>
                 <div id="post-1" > 
+                    <img src="/img/pizza.jpg" alt="post image">
+                    <div>
+                        <div class="post-desc">
+                            <h1> <?= $post->getTitle() ?> </h1>
+                            <h1> author </h1>
+
+                            <p> <?= $post->getDescription() ?></p>
+                        </div>
+                        
+                        <div class=" post-icons">
+
+                            <div>
+                                <i class="material-symbols-outlined">signal_cellular_alt</i>
+                                <span><?= $post->getDifficulty() ?></span>
+                            </div>
+                            <div>
+                                <i class="material-symbols-outlined">star_half</i>
+                                <span>4,5</span>
+                            </div>
+                            <div>
+                                <i class="material-symbols-outlined">timer</i>
+                                <span><?= $post->getPrepTime() ?></span>
+                            </div>
+                            <div>
+                                <i class="material-symbols-outlined">Restaurant</i>
+                                <span>for <?= $post->getNumberOfServings() ?></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <?php endforeach; ?>
+
+                <div id="post-2" > 
                     <img src="/img/pizza.jpg" alt="post image">
                     <div>
                         <div class="post-desc">
@@ -99,11 +135,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div> post 2</div>
-                <div> post 3</div>
-                <div> post 4</div>
-
+                
             </section>
         </main  >
     </div>
