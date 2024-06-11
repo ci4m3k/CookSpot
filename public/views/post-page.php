@@ -63,19 +63,22 @@
             <section class="posts">
     <div id="post-1">
         <div class="post-content">
-            <img src="/public/uploads/<? echo $post->getImage() ?>" alt="post image">
+            <img src="/public/uploads/<?= $post->getImage() ?>" alt="post image">
             <!-- <img src="/img/pizza.jpg" alt="post image"> -->
 
             <div class="post-icons">
                 <div>
                     <i class="material-symbols-outlined">account_circle</i>
-                    <span>author</span>
+                    <span><?
+                    $rep = new UserRepository();
+                    echo $rep->getUsernameFromId($post->getIdUserOwner());
+                    ?></span>
                 </div>
 
                 <div class="place-holder">xxx</div>
                 <div>
                     <i class="material-symbols-outlined">signal_cellular_alt</i>
-                    <span><? echo $post->getDifficulty() ?></span>
+                    <span><?= $post->getDifficulty() ?></span>
                 </div>
                 <div>
                     <i class="material-symbols-outlined">star_half</i>
@@ -83,30 +86,38 @@
                 </div>
                 <div>
                     <i class="material-symbols-outlined">timer</i>
-                    <span><? echo $post->getPrepTime() ?></span>
+                    <span><?= $post->getPrepTime() ?></span>
                 </div>
                 <div>
                     <i class="material-symbols-outlined">Restaurant</i>
-                    <span>for <? echo $post->getNumberOfServings() ?></span>
+                    <span>for <?= $post->getNumberOfServings() ?></span>
                 </div>
             </div>
         </div>
         <div class="post-desc">
+            <p class="date"> Posted on: <?= $post->getCreatedAt() ?>
+            </p>
             <h1>
-            <? echo $post-> getTitle() ?>
+            <?= $post-> getTitle() ?>
                 <!-- Title TitleTitle Title Title Title -->
             </h1>
-            <p class="date">
-            <? echo $post->getCreatedAt() ?>
-            </p>
+
+            <h4><?
+                $rep = new PostRepository;
+                $categories = $rep->getPostCategoriesList($post->getIdPost());
+                foreach($categories as $category): 
+                    echo '#'.$category->getCategoryName().' ';
+                endforeach;
+            ?></h4>
+
             <p>
-            <? echo $post->getDescription() ?>
+            <?= $post->getDescription() ?>
                 <!-- Savory Tuscan Chicken Pasta is a comforting and flavorful Italian-inspired dish featuring tender chicken breast, sun-dried tomatoes, spinach, and garlic, all tossed in a creamy Parmesan sauce and served over al dente pasta. -->
             </p>
 
             <h4>Ingredients</h4>
             <p>
-            <?php echo trim($post->getIngredients()); ?>
+            <?= $post->getIngredients() ?>
             <!-- 8 oz (225g) pasta (such as penne or fettuccine)
             2 boneless, skinless chicken breasts, thinly sliced
             Salt and black pepper, to taste
@@ -123,7 +134,7 @@
 
             <h4>Recipe</h4>
             <p>
-            <? echo $post->getRecipe() ?>
+            <?= $post->getRecipe() ?>
             <!-- Cook the pasta according to package instructions until al dente. Drain and set aside.
             Season the chicken breasts with salt and black pepper on both sides.
             Heat 1 tablespoon of olive oil in a large skillet over medium-high heat. Add the chicken breasts and cook for 4-5 minutes on each side, or until golden brown and cooked through. Remove the chicken from the skillet and set aside.

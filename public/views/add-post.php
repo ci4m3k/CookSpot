@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a33eb12e73.js" crossorigin="anonymous"></script>
+    <script src="./public/js/categories.js"></script>
 
  
 
@@ -71,10 +72,6 @@
                 </span>
 
                 <input type="text" class="input-text" placeholder="Title"  name="title">
-                <textarea name="description" rows="5" placeholder="Description"></textarea>
-                <textarea name="ingredients" rows="10" placeholder="ingredients"></textarea>
-                <textarea name="recipe" rows="10"  placeholder="recipe"></textarea>
-                <input type="file" name="image" class="input-text" >
 
                 <div class="lists">
                     <select name="difficulty" class="input-text">
@@ -123,9 +120,35 @@
                         <option value="19" >For 19 </option>
                         <option value="20" >For 20 </option>
                     </select>
-
-
                 </div>
+                           <!-- Custom select box with checkboxes -->
+                    <div class="custom-select input-text">
+                        <div class="select-box" onclick="toggleDropdown()">
+                            Select categories
+                        </div>
+                        <div class="checkbox-dropdown" id="checkboxDropdown" >
+                            <input type="text" class="search-input" placeholder="Search..." onkeyup="filterOptions()">
+                            <!-- <label><input type="checkbox" name="categories[]" value="Category 1"> Category 1</label> -->
+                            <?
+                            $rep = new PostRepository();
+                            $categories = $rep->getCategoriesList(); ?>
+                            <?php  foreach($categories as $category): ?>
+                                <label><input type="checkbox" name="categories[]" value="<?= $category->getIdCategory() ?>"> <?= $category->getCategoryName()?></label>
+                            <?php endforeach; ?>
+                            
+                           
+                        </div>
+                    </div>
+
+                <textarea name="description" rows="5" placeholder="Description"></textarea>
+                <textarea name="ingredients" rows="10" placeholder="ingredients"></textarea>
+                <textarea name="recipe" rows="10"  placeholder="recipe"></textarea>
+                <input type="file" name="image" class="input-text" >
+
+                
+
+
+
             
                 <button type="submit" class="input-text"> Submit </button>
 

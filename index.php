@@ -17,6 +17,9 @@ Routing::post('login', 'SecurityController');
 Routing::post('createaccount', 'SecurityController');
 Routing::get('postpage', 'PostController');
 Routing::post('addpost', 'PostController');
+////////////
+Routing::post('addpostc', 'DefaultController');
+
 
 Routing::run($path);
 

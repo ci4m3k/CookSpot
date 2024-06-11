@@ -40,6 +40,9 @@ section > form {
     line-height: 18px;
 }
 
+select.input-text{
+    cursor: pointer;
+}
 
 button.input-text {
     border: solid 2px #ffffff;
@@ -48,6 +51,7 @@ button.input-text {
     background-color: #FB8A22 ;
     width: calc(20% + 19px);
     min-width: unset;
+    cursor: pointer;
     
 }
 
@@ -58,6 +62,65 @@ button.input-text {
     grid-gap: 2em;
     align-items: center;
     justify-items: center;
+}
+
+
+/* Custom select box */
+.custom-select {
+    position: relative;
+    width: 200px;
+    user-select: none;
+}
+
+.select-box {
+    cursor: pointer;
+}
+
+.checkbox-dropdown {
+    display: none;
+    position: absolute;
+    width: 100%;
+    max-height: 200px; /* Maximum height for the dropdown */
+    overflow-y: auto; /* Enable vertical scrollbar if needed */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.checkbox-dropdown.show {
+    display: block;
+}
+
+.checkbox-dropdown label {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.checkbox-dropdown label:hover {
+    background-color: #f0f0f0;
+}
+
+.checkbox-dropdown input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-dropdown .search-input {
+    padding: 10px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
 }
 
 

@@ -64,6 +64,8 @@ class PostController extends AppController
             // Add the post to the database
             $this->postRepository->addPost($new_post);
 
+            $this->postRepository->addCategories($new_post->getIdPost(), $_POST['categories']);
+
             // Render the post page with the new post data
             return $this->render('post-page', ['messages' => $this->message, 'post' => $new_post]);
         }
@@ -94,6 +96,7 @@ class PostController extends AppController
         $posts = $this->postRepository->getPosts();
         $this -> render('mainpage',['posts' => $posts] );
     }
+    
 
     public function postpage() {
         if ($this->isGet() && isset($_GET['id'])) {
