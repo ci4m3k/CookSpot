@@ -26,24 +26,7 @@
 
 <body>
     <div class="base-container" id="bimg" >
-        <nav>
-            <img src="/img/logo3.png" alt="LOGO ALT">
-            <ul>
-                <li>
-                    <a href="#" class="button">Home</a>
-                </li>
-                <li>
-                    <a href="#" class="button">Explore</a>
-                </li>
-                <li>
-                    <a href="#" class="button">Bookmarks</a>
-                </li>
-                <li>
-                    <a href="#" class="button">My Profile</a>
-                </li>
-            </ul>
-
-        </nav>
+        <?php include_once __DIR__ . '/shared/nav.php' ?>
 
         <main> 
            
