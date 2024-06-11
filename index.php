@@ -14,7 +14,7 @@ $path = parse_url( $path, PHP_URL_PATH);
 Routing::get('index', 'DefaultController');
 Routing::get('mainpage', 'PostController');
 Routing::post('login', 'SecurityController');
-Routing::get('createaccount', 'DefaultController');
+Routing::post('createaccount', 'SecurityController');
 Routing::get('postpage', 'DefaultController');
 Routing::post('addpost', 'PostController');
 

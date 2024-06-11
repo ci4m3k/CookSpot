@@ -27,11 +27,21 @@
             
             <img src="/img/logo3.png" alt="logo alt">
 
-            <form>
-                <input type="text" placeholder="Login" class="input-text">
-                <input type="email" placeholder="Email" class="input-text">
-                <input type="password" placeholder="Password" class="input-text">
-                <input type="password" placeholder="Repete password" class="input-text">
+            <form action="createaccount" method="POST">
+                <span class="messages">
+                    <?php
+                        if(isset($messages)){
+                            foreach($messages as $message) {
+                                echo $message;
+                            }
+                        }
+                    ?>
+                </span>
+
+                <input name="username" type="text" placeholder="Username" class="input-text">
+                <input name="email" type="email" placeholder="Email" class="input-text">
+                <input name="password" type="password" placeholder="Password" class="input-text">
+                <input name="conf_password" type="password" placeholder="Repete password" class="input-text">
                 <button type="submit" class="input-text">Confirm</button>
                 <a href="#">Have an account? <span>Login</span></a>
 

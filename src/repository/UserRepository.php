@@ -51,6 +51,22 @@ class UserRepository extends Repository
         ]);
     }
 
+    public function isEmailUsed(string $email): bool
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.users WHERE email = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
+            return false;
+        }
+        return true;
+    }
+
     public function getUsernameFromId(string $id_user) : string
     {
         $stmt = $this->database->connect()->prepare('

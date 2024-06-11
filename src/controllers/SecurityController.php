@@ -36,12 +36,42 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['User with this email not exist!']]);
         }
 
-        if ($user->getPassword() !== $password) {
+        if (password_verify($user->getPassword(), $password)) {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/mainpage");
     }
+
+    public function createAccount()
+    {
+        if (!$this->isPost()) {
+            return $this->render('createaccount');
+        }
+
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password =$_POST['password'];
+        $conf_password = $_POST['conf_password'];
+
+        if ($this->userRepository->isEmailUsed($email)){
+            return $this->render('createaccount', ['messages' => ['This email is already taken']]);
+        }
+
+        if ($password !== $conf_password) {
+            return $this->render('createaccount', ['messages' => ['Please provide proper password']]);
+        }
+
+        // Generate a unique id for post
+        $uniqueUserId = uniqid('', true);
+
+        $user = new User($uniqueUserId, 1, $email, password_hash($password, PASSWORD_DEFAULT), $username);
+
+        $this->userRepository->addUser($user);
+
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+    }
+
 
 }
