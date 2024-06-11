@@ -3,21 +3,16 @@
 require_once 'AppController.php';
 
 class DefaultController extends AppController {
-
-    public function index() {
-        $this -> render('mainpage');
-    }
-
-
-    public function login() {
-        $this -> render('login');
-
-    }
-
-
-    public function createAccount() {
-        $this -> render('createAccount');
-    }
-
+    
+        public function index(): void
+        {
+            if (!isset($_SESSION['user'])) {
+                $this->render('login');
+                return;
+            }
+            $this->redirect('mainpage');
+        }
+    
+    
 }
 

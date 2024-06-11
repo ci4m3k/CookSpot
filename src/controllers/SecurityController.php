@@ -40,8 +40,9 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/mainpage");
+        $_SESSION['user'] = serialize($user);
+
+        $this->redirect('mainpage');
     }
 
     public function createAccount()
@@ -71,6 +72,13 @@ class SecurityController extends AppController
         $this->userRepository->addUser($user);
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+    }
+
+    public function logout(): void
+    {
+        session_unset();
+        session_destroy();
+        $this->redirect('');
     }
 
 

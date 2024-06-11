@@ -39,7 +39,8 @@ class PostController extends AppController
             $uniquePostId = uniqid('', true);
 
             //TODO get id user owner from cookies or sesion
-            $id_user_owner = 1;
+            $id_user_owner = $this->getIdUserFromSession();
+
 
             date_default_timezone_set('Europe/Warsaw');
             $created_at = date('d-m-Y');
@@ -110,10 +111,15 @@ class PostController extends AppController
             echo "Post ID is not specified.";
             //$this -> render('post-page');
         }
+    }
         
-
+    protected function getIdUserFromSession(): ?string
+    {
+        if (!isset($_SESSION['user'])) {
+            return null;
+        }
+        return unserialize($_SESSION['user'])->getIdUser();
     }
 
-
-
 }
+

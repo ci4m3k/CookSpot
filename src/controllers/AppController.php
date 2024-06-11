@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class AppController {
     private $request;
@@ -28,6 +29,12 @@ class AppController {
         }
         
         print $output;
+    }
+
+    protected function redirect(string $path): void
+    {
+        $url = "http://$_SERVER[HTTP_HOST]/{$path}";
+        header("Location: {$url}");
     }
 
 }
