@@ -95,5 +95,22 @@ class PostController extends AppController
         $this -> render('mainpage',['posts' => $posts] );
     }
 
+    public function postpage() {
+        if ($this->isGet() && isset($_GET['id'])) {
+            $id_post = $_GET['id'];
+            $post = $this->postRepository->getPost($id_post);
+            return $this->render('post-page', ['messages' => $this->message, 'post' => $post]);
+            
+            
+        } else {
+            // Handle the case where 'id' is not present in the URL
+            echo "Post ID is not specified.";
+            //$this -> render('post-page');
+        }
+        
+
+    }
+
+
 
 }

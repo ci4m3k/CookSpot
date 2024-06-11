@@ -6,12 +6,12 @@ require_once __DIR__.'/../models/Post.php';
 class PostRepository extends Repository
 {
 
-    public function getPost(int $id): ?Post
+    public function getPost(string $id_post): ?Post
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.posts WHERE id = :id_post
+            SELECT * FROM public.posts WHERE id_post = :id_post
         ');
-        $stmt->bindParam(':id_post', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id_post', $id_post, PDO::PARAM_INT);
         $stmt->execute();
 
         $post = $stmt->fetch(PDO::FETCH_ASSOC);
