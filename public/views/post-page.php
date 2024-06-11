@@ -26,7 +26,7 @@
 <body>
     <div class="base-container" id="bimg" >
         <nav>
-            <img src="/img/logo2.png" alt="LOGO ALT">
+            <img src="/img/logo3.png" alt="LOGO ALT">
             <ul>
                 <li>
                     <a href="#" class="button">Home</a>
@@ -97,7 +97,7 @@
                 <!-- Title TitleTitle Title Title Title -->
             </h1>
             <p class="date">
-            <? echo $post->getDate() ?>
+            <? echo $post->getCreatedAt() ?>
             </p>
             <p>
             <? echo $post->getDescription() ?>

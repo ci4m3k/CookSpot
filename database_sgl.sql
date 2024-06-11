@@ -1,6 +1,15 @@
+-- DROP TABLE "rating";
+-- DROP TABLE "post_categories";
+-- DROP TABLE "roles";
+-- DROP TABLE "bookmarks";
+-- DROP TABLE "users_details";
+-- DROP TABLE "categories"
+-- DROP TABLE "users";
+-- DROP TABLE "posts";
+
 
 CREATE TABLE "users" (
-	"id_user" serial NOT NULL,
+	"id_user" varchar(30) NOT NULL,
 	"id_role" int NOT NULL DEFAULT 1,
 	"email" varchar(100) NOT NULL,
 	"password" varchar(100) NOT NULL,
@@ -9,8 +18,8 @@ CREATE TABLE "users" (
 );
 
 CREATE TABLE "users_details" (
-	"id_users_details" serial NOT NULL,
-	"id_user" int NOT NULL,
+	"id_users_details" varchar(30) NOT NULL,
+	"id_user" varchar(30) NOT NULL,
 	"first_name" varchar(30),
 	"last_name" varchar(50),
 	"city" varchar(50),
@@ -23,32 +32,33 @@ CREATE TABLE "users_details" (
 );
 
 CREATE TABLE "posts" (
-	"id_post" serial NOT NULL,
-	"id_user_owner" int NOT NULL,
+	"id_post" varchar(30) NOT NULL,
+	"id_user_owner" varchar(30) NOT NULL,
 	"title" varchar(255) NOT NULL,
 	"description" text NOT NULL,
-	"ingrediens" text NOT NULL,
+	"ingredients" text NOT NULL,
 	"recipe" text NOT NULL,
 	"image" varchar(255) NOT NULL,
-	"preparation_time" varchar(20) NOT NULL,
-	"dificulty" varchar(10) NOT NULL,
-	"servings_number" int NOT NULL,
+	"prep_time" varchar(10) NOT NULL,
+	"difficulty" varchar(10) NOT NULL,
+	"number_of_servings" int NOT NULL,
 	"created_at" varchar(20) NOT NULL,
 	"total_score" int NOT NULL DEFAULT 0,
 	"total_reviews" int NOT NULL DEFAULT 0,
+
 	PRIMARY KEY("id_post")
 );
 
 
 CREATE TABLE "rating" (
-	"id_user" int NOT NULL,
-	"id_post" int NOT NULL,
+	"id_user" varchar(30) NOT NULL,
+	"id_post" varchar(30) NOT NULL,
 	"score" int NOT NULL CHECK(score BETWEEN 1 AND 5)
 );
 
-CREATE TABLE "bookmark" (
-	"id_user" int NOT NULL,
-	"id_post" int NOT NULL
+CREATE TABLE "bookmarks" (
+	"id_user" varchar(30) NOT NULL,
+	"id_post" varchar(30) NOT NULL
 );
 
 CREATE TABLE "categories" (
@@ -59,7 +69,7 @@ CREATE TABLE "categories" (
 );
 
 CREATE TABLE "post_categories" (
-	"id_post" int NOT NULL,
+	"id_post" varchar(30) NOT NULL,
 	"id_category" int NOT NULL
 );
 
@@ -72,10 +82,10 @@ CREATE TABLE "roles" (
 ALTER TABLE "users"
 ADD FOREIGN KEY("id_role") REFERENCES "roles"("id_role")
 ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE "bookmark"
+ALTER TABLE "bookmarks"
 ADD FOREIGN KEY("id_user") REFERENCES "users"("id_user")
 ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE "bookmark"
+ALTER TABLE "bookmarks"
 ADD FOREIGN KEY("id_post") REFERENCES "posts"("id_post")
 ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE "rating"

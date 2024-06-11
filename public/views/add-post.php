@@ -26,7 +26,7 @@
 <body>
     <div class="base-container" id="bimg" >
         <nav>
-            <img src="/img/logo2.png" alt="LOGO ALT">
+            <img src="/img/logo3.png" alt="LOGO ALT">
             <ul>
                 <li>
                     <a href="#" class="button">Home</a>

@@ -26,7 +26,7 @@
 <body>
     <div class="base-container" id="bimg" >
         <nav>
-            <img src="/img/logo2.png" alt="LOGO ALT">
+            <img src="/img/logo3.png" alt="LOGO ALT">
             <ul>
                 <li>
                     <a href="#" class="button">Home</a>
@@ -66,12 +66,15 @@
 
             <section class="posts">
                 <?php foreach($posts as $post): ?>
-                <div id="post-1" > 
+                <div id="<?= $post->getIdPost() ?>" >
                     <img src="../public/uploads/<?= $post->getImage() ?>" alt="post image">
                     <div>
                         <div class="post-desc">
                             <h1> <?= $post->getTitle() ?> </h1>
-                            <h1> author </h1>
+                            <h1> <?
+                             $rep = new UserRepository();
+                             echo $rep->getUsernameFromId($post->getIdUserOwner());
+                             ?> </h1>
 
                             <p> <?= $post->getDescription() ?></p>
                         </div>
@@ -97,7 +100,9 @@
 
                         </div>
                     </div>
+
                 </div>
+
 
                 <?php endforeach; ?>
 

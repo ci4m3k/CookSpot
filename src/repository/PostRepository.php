@@ -21,6 +21,8 @@ class PostRepository extends Repository
         }
 
         return new Post(
+            $post['id_post'],
+            $post['id_user_owner'],
             $post['title'],
             $post['description'],
             $post['ingredients'],
@@ -28,36 +30,37 @@ class PostRepository extends Repository
             $post['image'],
             $post['prep_time'],
             $post['difficulty'],
-            $post['number_of_servings']
+            $post['number_of_servings'],
+            $post['created_at'],
+            $post['total_score'],
+            $post['total_reviews'],
         );
     }
-
-    // "id_post" serial NOT NULL,
-	// "id_user_owner" int NOT NULL,
-	// "title" varchar(255) NOT NULL,
-	// "description" text NOT NULL,
-	// "ingrediens" text NOT NULL,
-	// "recipe" text NOT NULL,
-	// "image" varchar(255) NOT NULL,
-	// "preparation_time" varchar(20) NOT NULL,
-	// "dificulty" int NOT NULL,
-	// "servings_number" int NOT NULL,
-	// "created_at" varchar(20) NOT NULL,
-	// "total_score" int NOT NULL DEFAULT 0,
-	// "total_reviews" int NOT NULL DEFAULT 0,
 
     public function addPost(Post $post): void
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO posts (id_user_owner, title, description, ingrediens, recipe, image, preparation_time, dificulty, servings_number, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO posts (
+            id_post,
+            id_user_owner,
+            title,
+            description,
+            ingredients,
+            recipe,
+            image,
+            prep_time,
+            difficulty,
+            number_of_servings,
+            created_at,
+            total_score,
+            total_reviews
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
-        // TODO: You should get this value from logged user session
-        $id_user_owner = 1;
-
         $stmt->execute([
-            $id_user_owner,
+            $post->getIdPost(),
+            $post->getIdUserOwner(), 
             $post->getTitle(),
             $post->getDescription(),
             $post->getIngredients(),
@@ -66,7 +69,9 @@ class PostRepository extends Repository
             $post->getPrepTime(),
             $post->getDifficulty(),
             $post->getNumberOfServings(),
-            $post->getDate()
+            $post->getCreatedAt(),
+            $post->getTotalScore(),
+            $post->getTotalReviews(),
         ]);
     }
 
@@ -88,14 +93,19 @@ class PostRepository extends Repository
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($posts as $post) {
             $result[] = new Post(
+                $post['id_post'],
+                $post['id_user_owner'],
                 $post['title'],
                 $post['description'],
-                $post['ingrediens'],
+                $post['ingredients'],
                 $post['recipe'],
                 $post['image'],
-                $post['preparation_time'],
-                $post['dificulty'],
-                $post['servings_number'],
+                $post['prep_time'],
+                $post['difficulty'],
+                $post['number_of_servings'],
+                $post['created_at'],
+                $post['total_score'],
+                $post['total_reviews'],
             );
 
         }
