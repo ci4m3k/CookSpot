@@ -29,6 +29,29 @@ class UserRepository extends Repository
         );
     }
 
+    public function getUserFromIdUser(string $id_user): ?User
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.users WHERE id_user = :id_user
+        ');
+        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
+            return null;
+        }
+
+        return new User(
+            $user['id_user'],
+            $user['id_role'],
+            $user['email'],
+            $user['password'],
+            $user['username'],
+        );
+    }
+
     public function addUser(User $user)
     {
         $stmt = $this->database->connect()->prepare('
@@ -83,6 +106,54 @@ class UserRepository extends Repository
         return $user['username'];
     }
     
+    public function updateUsername(string $user_id, string $new_username)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.users
+            SET
+                username = ?
+            WHERE
+                id_user = ?
+        ');
+
+        $stmt->execute([
+            $new_username,
+            $user_id
+        ]);
+    }
+
+    public function updateEmail(string $user_id, string $new_email)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.users
+            SET
+                email = ?
+            WHERE
+                id_user = ?
+        ');
+
+        $stmt->execute([
+            $new_email,
+            $user_id
+        ]);
+    }
+
+
+    public function updateUserPassword(string $user_id, string $new_hash_password)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.users
+            SET
+                password = ?
+            WHERE
+                id_user = ?
+        ');
+
+        $stmt->execute([
+            $new_hash_password,
+            $user_id
+        ]);
+    }
 
 
 }

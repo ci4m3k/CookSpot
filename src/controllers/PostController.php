@@ -38,7 +38,6 @@ class PostController extends AppController
             // Generate a unique id for post
             $uniquePostId = uniqid('', true);
 
-            //TODO get id user owner from cookies or sesion
             $id_user_owner = $this->getIdUserFromSession();
 
 
@@ -112,7 +111,8 @@ class PostController extends AppController
             //$this -> render('post-page');
         }
     }
-        
+    
+    //TODO it propoble should be in different file 
     protected function getIdUserFromSession(): ?string
     {
         if (!isset($_SESSION['user'])) {

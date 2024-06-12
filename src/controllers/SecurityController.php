@@ -36,6 +36,8 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['User with this email not exist!']]);
         }
 
+        //var_dump(!password_verify($password, $user->getPassword()));
+        if (!password_verify($password, $user->getPassword())) {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
@@ -79,6 +81,44 @@ class SecurityController extends AppController
         session_destroy();
         $this->redirect('');
     }
+
+    public function changepassword()
+    {
+        if (!$this->isPost()) {
+            return $this->render('change-password');
+        }
+
+        $user = $this->userRepository->getUserFromIdUser($this->getIdUserFromSession());
+
+        
+        $password =$_POST['password'];
+        $new_password =$_POST['new_password'];
+        $conf_password = $_POST['conf_password'];
+
+
+        if (!password_verify($password, $user->getPassword())) {
+            return $this->render('change-password', ['messages' => ['Wrong password!']]);
+        }
+       
+        if ($new_password !== $conf_password) {
+            return $this->render('change-password', ['messages' => ["Your conformation password dosen't match your new password"]]);
+        }
+
+        $this->userRepository->updateUserPassword($user->getIdUser(), password_hash($new_password, PASSWORD_DEFAULT));
+        //var_dump($user->getIdUser(), password_hash($password, PASSWORD_DEFAULT));
+
+        return $this->render('login', ['messages' => ['Your password got succesfully changed! ']]);
+    }
+
+    //TODO it propoble should be in different file 
+    protected function getIdUserFromSession(): ?string
+    {
+        if (!isset($_SESSION['user'])) {
+            return null;
+        }
+        return unserialize($_SESSION['user'])->getIdUser();
+    }
+
 
 
 }

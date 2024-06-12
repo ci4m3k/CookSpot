@@ -137,7 +137,6 @@ class PostRepository extends Repository
 
     public function addCategories(string $id_post, array $categories): void
     {
-        var_dump($categories);
         foreach($categories as $id_category):
             $stmt = $this->database->connect()->prepare('
                 INSERT INTO post_categories (
@@ -203,7 +202,40 @@ class PostRepository extends Repository
 
     }
 
+    public function getPostsByIdUserOwner(string $id_user_owner): array
+    {
 
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+
+            SELECT * FROM posts WHERE id_user_owner = :id_user_owner;
+
+        ');
+        
+        $stmt->bindParam(':id_user_owner', $id_user_owner, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($posts as $post) {
+            $result[] = new Post(
+                $post['id_post'],
+                $post['id_user_owner'],
+                $post['title'],
+                $post['description'],
+                $post['ingredients'],
+                $post['recipe'],
+                $post['image'],
+                $post['prep_time'],
+                $post['difficulty'],
+                $post['number_of_servings'],
+                $post['created_at'],
+                $post['total_score'],
+                $post['total_reviews'],
+            );
+        }
+        return $result;
+    }
 
 
 }

@@ -20,7 +20,7 @@ section > form {
 }
 
 
-.input-text, textarea {
+.input-text, textarea, .email, .password {
     border: solid 2px #FB8A22;
     border-radius: 2em;
     text-align: left;
