@@ -26,7 +26,7 @@
                 </div>
                 <div>
                     <i class="material-symbols-outlined">thumb_up</i>
-                    <span>4,5</span>
+                    <span><?= $post->getLike() ?></span>
                 </div>
                 <div>
                     <i class="material-symbols-outlined">timer</i>
@@ -74,7 +74,7 @@
             </div>
             <div>
                 <i class="material-symbols-outlined" >thumb_up</i>
-                <span>4,5</span>
+                <span id="like">like</span>
             </div>
             <div>
                 <i class="material-symbols-outlined">timer</i>

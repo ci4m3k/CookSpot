@@ -32,7 +32,7 @@
                 <input name="email" type="text" placeholder="email" class="input-text">
                 <input name="password" type="password" placeholder="password" class="input-text">
                 <button type="submit" class="input-text">Login</button>
-                <a href="#"> Don't have an account? <span>Create account</span></a>
+                <a href="createaccount"> Don't have an account? <span>Create account</span></a>
 
             </form>
 

@@ -35,7 +35,7 @@
                 <input name="password" type="password" placeholder="Password" class="input-text">
                 <input name="conf_password" type="password" placeholder="Repete password" class="input-text">
                 <button type="submit" class="input-text">Confirm</button>
-                <a href="#">Have an account? <span>Login</span></a>
+                <a href="login">Have an account? <span>Login</span></a>
 
             </form>
 

@@ -44,8 +44,8 @@ class PostRepository extends Repository
             $post['difficulty'],
             $post['number_of_servings'],
             $post['created_at'],
-            $post['total_score'],
-            $post['total_reviews'],
+            $post['like'],
+            $post['dislike'],
         );
     }
 
@@ -64,8 +64,8 @@ class PostRepository extends Repository
             difficulty,
             number_of_servings,
             created_at,
-            total_score,
-            total_reviews
+            "like",
+            dislike
             )
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
@@ -82,8 +82,8 @@ class PostRepository extends Repository
             $post->getDifficulty(),
             $post->getNumberOfServings(),
             $post->getCreatedAt(),
-            $post->getTotalScore(),
-            $post->getTotalReviews(),
+            $post->getLike(),
+            $post->getDislike()
         ]);
     }
 
@@ -124,8 +124,8 @@ class PostRepository extends Repository
                 $post['difficulty'],
                 $post['number_of_servings'],
                 $post['created_at'],
-                $post['total_score'],
-                $post['total_reviews'],
+                $post['like'],
+                $post['dislike'],
             );
         }
         return $result;
@@ -261,8 +261,8 @@ class PostRepository extends Repository
                 $post['difficulty'],
                 $post['number_of_servings'],
                 $post['created_at'],
-                $post['total_score'],
-                $post['total_reviews'],
+                $post['like'],
+                $post['dislike'],
             );
         }
         return $result;
@@ -273,7 +273,21 @@ class PostRepository extends Repository
         $searchString = '%' . strtolower($searchString) . '%';
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.posts WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search OR LOWER(ingredients) LIKE :search
+            SELECT
+                posts.*,
+                users.username
+            FROM
+                posts
+            LEFT JOIN
+                users
+            ON
+                posts.id_user_owner = users.id_user 
+            WHERE
+                LOWER(title) LIKE :search 
+            OR
+                LOWER(description) LIKE :search 
+            OR
+                LOWER(ingredients) LIKE :search
         ');
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();

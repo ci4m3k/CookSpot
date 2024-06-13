@@ -14,8 +14,8 @@ class Post
     private $difficulty;
     private $number_of_servings;
     private $created_at;
-    private $total_score;
-    private $total_reviews;
+    private $like;
+    private $dislike;
     
 
 	// "id_post" serial NOT NULL,
@@ -29,8 +29,8 @@ class Post
 	// "difficulty" varchar(10) NOT NULL,
 	// "number_of_servings" int NOT NULL,
 	// "created_at" varchar(20) NOT NULL,
-	// "total_score" int NOT NULL DEFAULT 0,
-	// "total_reviews" int NOT NULL DEFAULT 0,
+	// "like" int NOT NULL DEFAULT 0,
+	// "dislike" int NOT NULL DEFAULT 0,
 
 
     // Constructor
@@ -47,8 +47,8 @@ class Post
         string $difficulty,
         int $number_of_servings,
         string $created_at,
-        int $total_score,
-        int $total_reviews
+        int $like,
+        int $dislike
         ) {
         $this->id_post = $id_post;
         $this->id_user_owner = $id_user_owner;
@@ -62,8 +62,8 @@ class Post
         $this->difficulty = $difficulty;
         $this->number_of_servings = $number_of_servings;
         $this->created_at = $created_at;
-        $this->total_score = $total_score;
-        $this->total_reviews = $total_reviews;
+        $this->like = $like;
+        $this->dislike = $dislike;
     }
 
     // Getter and Setter for id_post
@@ -174,22 +174,22 @@ class Post
         $this->created_at = $created_at;
     }
 
-    // Getter and Setter for total_score
-    public function getTotalScore(): int {
-        return $this->total_score;
+    // Getter and Setter for like
+    public function getLike(): int {
+        return $this->like;
     }
 
-    public function setTotalScore(int $total_score): void {
-        $this->total_score = $total_score;
+    public function setLike(int $like): void {
+        $this->like = $like;
     }
 
-    // Getter and Setter for total_reviews
-    public function getTotalReviews(): int {
-        return $this->total_reviews;
+    // Getter and Setter for dislike
+    public function getDislike(): int {
+        return $this->dislike;
     }
 
-    public function setTotalReviews(int $total_reviews): void {
-        $this->total_reviews = $total_reviews;
+    public function setDislike(int $dislike): void {
+        $this->dislike = $dislike;
     }
 }
 

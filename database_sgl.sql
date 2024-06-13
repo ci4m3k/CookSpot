@@ -1,11 +1,11 @@
--- DROP TABLE "rating";
--- DROP TABLE "post_categories";
--- DROP TABLE "roles";
--- DROP TABLE "bookmarks";
--- DROP TABLE "users_details";
--- DROP TABLE "categories"
--- DROP TABLE "users";
--- DROP TABLE "posts";
+--DROP TABLE "rating";
+--DROP TABLE "post_categories";
+--DROP TABLE "bookmarks";
+--DROP TABLE "users_details";
+--DROP TABLE "categories";
+--DROP TABLE "posts";
+--DROP TABLE "users";
+--DROP TABLE "roles";
 
 
 CREATE TABLE "users" (
@@ -43,8 +43,8 @@ CREATE TABLE "posts" (
 	"difficulty" varchar(10) NOT NULL,
 	"number_of_servings" int NOT NULL,
 	"created_at" varchar(20) NOT NULL,
-	"total_score" int NOT NULL DEFAULT 0,
-	"total_reviews" int NOT NULL DEFAULT 0,
+	"like" int NOT NULL DEFAULT 0,
+	"dislike" int NOT NULL DEFAULT 0,
 
 	PRIMARY KEY("id_post")
 );

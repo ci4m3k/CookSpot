@@ -53,7 +53,10 @@ function createPost(post) {
     time.innerHTML = post.prep_time;
 
     const ser_num = clone.querySelector("#ser_num");
-    ser_num.innerHTML = post.number_of_servings;
+    ser_num.innerHTML = `for ${post.number_of_servings}`;
+
+    const like = clone.querySelector("#like");
+    like.innerHTML = post.like;
 
     const link = clone.querySelector("#title-t");
     link.href = `postpage?id=${post.id_post}`;
