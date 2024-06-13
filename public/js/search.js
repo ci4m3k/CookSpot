@@ -40,9 +40,8 @@ function createPost(post) {
     const image = clone.querySelector("img");
     image.src = `/public/uploads/${post.image}`;
 
-    //TODO replace that
     const username = clone.querySelector("#username-t");
-    username.innerHTML = post.title;
+    username.innerHTML = post.user_owner;
 
     const desc = clone.querySelector("#desc-t");
     desc.innerHTML = post.description;
@@ -55,6 +54,11 @@ function createPost(post) {
 
     const ser_num = clone.querySelector("#ser_num");
     ser_num.innerHTML = post.number_of_servings;
+
+    const link = clone.querySelector("#title-t");
+    link.href = `postpage?id=${post.id_post}`;
+
+    
 
 
 
