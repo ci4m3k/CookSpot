@@ -41,7 +41,7 @@ function createPost(post) {
     image.src = `/public/uploads/${post.image}`;
 
     const username = clone.querySelector("#username-t");
-    username.innerHTML = post.user_owner;
+    username.innerHTML = post.username;
 
     const desc = clone.querySelector("#desc-t");
     desc.innerHTML = post.description;
