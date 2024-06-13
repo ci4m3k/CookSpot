@@ -6,36 +6,38 @@ require_once 'src/controllers/PostController.php';
 require_once 'src/controllers/UserController.php';
 require_once 'src/controllers/BookmarkController.php';
 
-class Routing {
+class Routing
+{
+
     public static $routes;
 
-    public static function get($url, $controller) {
-        self::$routes[$url] = $controller;
+    public static function get($url, $view)
+    {
+        self::$routes[$url] = $view;
     }
 
-    public static function post($url, $controller) {
-        self::$routes[$url] = $controller;
+    public static function post($url, $view)
+    {
+        self::$routes[$url] = $view;
     }
 
-    public static function run($url){
-        $action = explode("/", $url)[0];
+    public static function run($url)
+    {
+
+        $urlParts = explode("/", $url);
+        $action = $urlParts[0];
 
         if (!array_key_exists($action, self::$routes)) {
-            //TODO error controller
             die("Wrong url!");
-            
         }
 
         $controller = self::$routes[$action];
         $object = new $controller;
-        
         $action = $action ?: 'index';
 
-        $object->$action();
+        
+        $id = $urlParts[1] ?? '';
 
-        // $action = $action ?: 'index';
-        // $id = $urlParts[1] ?? '';
-
+        $object->$action($id);
     }
-
 }

@@ -26,6 +26,8 @@ if(isset($_SESSION['user'])){
     Routing::post('changepassword','SecurityController');
     Routing::get('bookmarks','BookmarkController');
     Routing::post('search', 'PostController');
+    Routing::get('like', 'PostController');
+    Routing::get('dislike', 'PostController');
 }
 
 

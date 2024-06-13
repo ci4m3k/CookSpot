@@ -149,6 +149,17 @@ class PostController extends AppController
         }
     }
 
+    public function like(string $id) {
+        $this->postRepository->like($id);
+        http_response_code(200);
+        var_dump("like");
+    }
+
+    public function dislike(string $id) {
+        $this->postRepository->dislike($id);
+        http_response_code(200);
+    }
+
 
 
 

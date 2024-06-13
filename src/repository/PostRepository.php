@@ -297,4 +297,27 @@ class PostRepository extends Repository
     }
 
 
+    public function like(string $id_post) 
+    {
+        
+        $stmt = $this->database->connect()->prepare('
+           UPDATE posts SET "like" = "like" + 1 WHERE id_post = :id_post
+        ');
+
+        $stmt->bindParam(':id_post', $id_post, PDO::PARAM_INT);
+        $stmt->execute();
+        var_dump($id_post);
+   }
+
+   public function dislike(string $id_post) 
+   {
+       $stmt = $this->database->connect()->prepare('
+           UPDATE posts SET dislike = dislike + 1 WHERE id_post = :id_post
+        ');
+
+       $stmt->bindParam(':id_post', $id_post, PDO::PARAM_INT);
+       $stmt->execute();
+   }
+
+
 }

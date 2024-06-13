@@ -2,9 +2,12 @@
 <link rel="stylesheet" type="text/css" href="public/css/style.css">
 <link rel="stylesheet" type="text/css" href="public/css/post-page.css">
 
+<script type="text/javascript" src="./public/js/statistics.js" defer></script>
+
+
 
 <section class="posts">
-    <div id="post-1">
+    <div id="<?= $post->getIdPost() ?>">
         <div class="post-content">
             <img src="/public/uploads/<?= $post->getImage() ?>" alt="post image">
             <!-- <img src="/img/pizza.jpg" alt="post image"> -->
@@ -33,16 +36,19 @@
         </div>
 
         <div class="post-icons-interactive">
+
+            <div class="like">
+                <span class="like-count"><?= $post->getLike() ?></span><i class="material-symbols-outlined">thumb_up</i> 
+            </div>
+
+            <div class="dislike">
+                <i class="material-symbols-outlined">thumb_down</i><span class="dislike-count"><?=$post->getDislike() ?></span>
+            </div>
+            
             <div>
-                <i class="material-symbols-outlined">thumb_up</i>
+                <i class="material-symbols-outlined" id="bookmark">bookmark</i><span></span>
             </div>
-            <div>
-                <i class="material-symbols-outlined">thumb_down</i>
-            </div>
-            <div>
-                <i class="material-symbols-outlined">bookmark</i>
-            </div>
-            </div>
+        </div>
 
 
         <div class="post-desc">
