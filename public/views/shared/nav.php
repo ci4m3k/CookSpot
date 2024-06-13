@@ -12,7 +12,7 @@
                     <a href="#" class="button">Explore</a>
                 </li>
                 <li>
-                    <a href="#" class="button">Bookmarks</a>
+                    <a href="bookmarks" class="button">Bookmarks</a>
                 </li>
                 <li>
                     <a href="/myprofile" class="button">My Profile</a>

@@ -24,6 +24,7 @@ if(isset($_SESSION['user'])){
     Routing::post('changeusername','UserController');
     Routing::post('changeemail','UserController');
     Routing::post('changepassword','SecurityController');
+    Routing::get('bookmarks','BookmarkController');
 }
 
 
