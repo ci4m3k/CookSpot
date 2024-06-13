@@ -99,7 +99,12 @@ p.date {
     font-size: 0.7em;
 }
 
-
+.post-icons-interactive{
+    display: flex;
+    font-size: 1.2em;
+    justify-content: left;
+    margin-left: 30px;
+}
 
 
 .place-holder {
@@ -120,7 +125,7 @@ p.date {
 
     .post-icons {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         font-size: 17px;
     }
 

@@ -19,13 +19,10 @@
                 </div>
 
                 <div class="place-holder">xxx</div>
+                <div class="place-holder">xxx</div>
                 <div>
                     <i class="material-symbols-outlined">signal_cellular_alt</i>
                     <span><?= $post->getDifficulty() ?></span>
-                </div>
-                <div>
-                    <i class="material-symbols-outlined">star_half</i>
-                    <span>4,5</span>
                 </div>
                 <div>
                     <i class="material-symbols-outlined">timer</i>
@@ -37,6 +34,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="post-icons-interactive">
+            <div>
+                <i class="material-symbols-outlined">thumb_up</i>
+            </div>
+            <div>
+                <i class="material-symbols-outlined">thumb_down</i>
+            </div>
+            <div>
+                <i class="material-symbols-outlined">bookmark</i>
+            </div>
+            </div>
+
+
         <div class="post-desc">
             <p class="date"> Posted on: <?= $post->getCreatedAt() ?>
             </p>

@@ -28,7 +28,7 @@
                     <span><?= $post->getDifficulty() ?></span>
                 </div>
                 <div>
-                    <i class="material-symbols-outlined">star_half</i>
+                    <i class="material-symbols-outlined">thumb_up</i>
                     <span>4,5</span>
                 </div>
                 <div>
@@ -76,7 +76,7 @@
                 <span id="diff">difficulty</span>
             </div>
             <div>
-                <i class="material-symbols-outlined" >star_half</i>
+                <i class="material-symbols-outlined" >thumb_up</i>
                 <span>4,5</span>
             </div>
             <div>
