@@ -82,7 +82,7 @@ main{
     
 }
 
-.search-bar>form>input {
+.search-bar>input {
     width: 100%;
     text-align: left;
     margin:  0;

@@ -237,5 +237,20 @@ class PostRepository extends Repository
         return $result;
     }
 
+    public function getPostsByTitle(string $searchString)
+    {
+        $searchString = '%' . strtolower($searchString) . '%';
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM posts WHERE LOWER(title) LIKE :search 
+        ');
+        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        //var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
+        $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $posts;
+    }
+
 
 }

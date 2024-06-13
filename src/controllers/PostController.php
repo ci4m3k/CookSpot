@@ -94,6 +94,7 @@ class PostController extends AppController
     
     public function mainpage() {
         $posts = $this->postRepository->getPosts();
+        //$this->postRepository->getPostsByTitle("test");
         $this -> render('mainpage',['posts' => $posts] );
     }
     
@@ -120,6 +121,26 @@ class PostController extends AppController
         }
         return unserialize($_SESSION['user'])->getIdUser();
     }
+
+
+
+    public function search()
+    {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->postRepository->getPostsByTitle($decoded['search']));
+        }
+    }
+
+
+
 
 }
 

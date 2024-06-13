@@ -50,3 +50,48 @@
 
     
 </section>
+
+
+
+<template id="post-template">
+
+<div id="" >
+
+    <img src="" alt="post image">
+    <div>
+
+
+        <div class="post-desc">
+            <h1><a href="" id="title-t"> title </a></h1>
+            <h1 id="username-t"> username </h1>
+
+            <p id="desc-t"> desc</p>
+        </div>
+        
+
+
+        <div class=" post-icons">
+            <div>
+                <i class="material-symbols-outlined" >signal_cellular_alt</i>
+                <span id="diff">difficulty</span>
+            </div>
+            <div>
+                <i class="material-symbols-outlined" >star_half</i>
+                <span>4,5</span>
+            </div>
+            <div>
+                <i class="material-symbols-outlined">timer</i>
+                <span id="time">time</span>
+            </div>
+            <div>
+                <i class="material-symbols-outlined">Restaurant</i>
+                <span id="ser_num">for ser_num</span>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+</template>
