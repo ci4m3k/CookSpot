@@ -10,7 +10,17 @@ class PostRepository extends Repository
     public function getPost(string $id_post): ?Post
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.posts WHERE id_post = :id_post
+            SELECT
+                posts.*,
+                users.username
+            FROM
+                posts
+            LEFT JOIN
+                users
+            ON
+                posts.id_user_owner = users.id_user             
+            WHERE 
+                id_post = :id_post
         ');
         $stmt->bindParam(':id_post', $id_post, PDO::PARAM_INT);
         $stmt->execute();
@@ -24,6 +34,7 @@ class PostRepository extends Repository
         return new Post(
             $post['id_post'],
             $post['id_user_owner'],
+            $post['username'],
             $post['title'],
             $post['description'],
             $post['ingredients'],
@@ -84,7 +95,15 @@ class PostRepository extends Repository
 
         $stmt = $this->database->connect()->prepare('
 
-            SELECT * FROM posts;
+            SELECT
+                posts.*,
+                users.username
+            FROM
+                posts
+            LEFT JOIN
+                users
+            ON
+                posts.id_user_owner = users.id_user;
 
         ');
 
@@ -95,6 +114,7 @@ class PostRepository extends Repository
             $result[] = new Post(
                 $post['id_post'],
                 $post['id_user_owner'],
+                $post['username'],
                 $post['title'],
                 $post['description'],
                 $post['ingredients'],
@@ -209,7 +229,17 @@ class PostRepository extends Repository
 
         $stmt = $this->database->connect()->prepare('
 
-            SELECT * FROM posts WHERE id_user_owner = :id_user_owner;
+            SELECT
+                posts.*,
+                users.username
+            FROM
+                posts
+            LEFT JOIN
+                users
+            ON
+                posts.id_user_owner = users.id_user 
+            WHERE
+                id_user_owner = :id_user_owner;
 
         ');
         
@@ -221,6 +251,7 @@ class PostRepository extends Repository
             $result[] = new Post(
                 $post['id_post'],
                 $post['id_user_owner'],
+                $post['username'],
                 $post['title'],
                 $post['description'],
                 $post['ingredients'],
@@ -242,12 +273,11 @@ class PostRepository extends Repository
         $searchString = '%' . strtolower($searchString) . '%';
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM posts WHERE LOWER(title) LIKE :search 
+            SELECT * FROM public.posts WHERE LOWER(title) LIKE :search OR LOWER(description) LIKE :search OR LOWER(ingredients) LIKE :search
         ');
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();
 
-        //var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $posts;
     }

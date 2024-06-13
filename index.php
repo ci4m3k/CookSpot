@@ -14,7 +14,7 @@ $path = parse_url( $path, PHP_URL_PATH);
 
 
 
-if(isset($_SESSION['user'])){
+//if(isset($_SESSION['user'])){
     Routing::get('mainpage', 'PostController');
     Routing::get('postpage', 'PostController');
     Routing::post('addpost', 'PostController');
@@ -26,7 +26,7 @@ if(isset($_SESSION['user'])){
     Routing::post('changepassword','SecurityController');
     Routing::get('bookmarks','BookmarkController');
     Routing::post('search', 'PostController');
-}
+//}
 
 
 Routing::get('', 'DefaultController');

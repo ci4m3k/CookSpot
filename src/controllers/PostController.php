@@ -39,6 +39,7 @@ class PostController extends AppController
             $uniquePostId = uniqid('', true);
 
             $id_user_owner = $this->getIdUserFromSession();
+            $user_owner = $this->getUsernameFromSession();
 
 
             date_default_timezone_set('Europe/Warsaw');
@@ -48,6 +49,7 @@ class PostController extends AppController
             $new_post = new Post(
                 $uniquePostId,
                 $id_user_owner,
+                $user_owner,
                 $_POST['title'],
                 $_POST['description'],
                 $_POST['ingredients'],
@@ -120,6 +122,14 @@ class PostController extends AppController
             return null;
         }
         return unserialize($_SESSION['user'])->getIdUser();
+    }
+
+    protected function getUsernameFromSession(): ?string
+    {
+        if (!isset($_SESSION['user'])) {
+            return null;
+        }
+        return unserialize($_SESSION['user'])->getUsername();
     }
 
 

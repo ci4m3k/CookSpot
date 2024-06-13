@@ -4,6 +4,7 @@ class Post
 
     private $id_post;
     private $id_user_owner;
+    private $user_owner;
     private $title;
     private $description;
     private $ingredients;
@@ -36,6 +37,7 @@ class Post
     public function __construct(
         string $id_post,
         string $id_user_owner,
+        string $user_owner,
         string $title,
         string $description,
         string $ingredients,
@@ -50,6 +52,7 @@ class Post
         ) {
         $this->id_post = $id_post;
         $this->id_user_owner = $id_user_owner;
+        $this->user_owner = $user_owner;
         $this->title = $title;
         $this->description = $description;
         $this->ingredients = $ingredients;
@@ -79,6 +82,15 @@ class Post
 
     public function setIdUserOwner(string $id_user_owner): void {
         $this->id_user_owner = $id_user_owner;
+    }
+
+    // Getter and Setter for user_owner
+    public function getUserOwner(): string {
+        return $this->user_owner;
+    }
+
+    public function setUserOwner(string $user_owner): void {
+        $this->user_owner = $user_owner;
     }
 
     // Getter and Setter for title

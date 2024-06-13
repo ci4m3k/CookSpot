@@ -12,10 +12,7 @@
             <div class="post-icons">
                 <div>
                     <i class="material-symbols-outlined">account_circle</i>
-                    <span><?
-                    $rep = new UserRepository();
-                    echo $rep->getUsernameFromId($post->getIdUserOwner());
-                    ?></span>
+                    <span><?= $post->getUserOwner()?></span>
                 </div>
 
                 <div class="place-holder">xxx</div>

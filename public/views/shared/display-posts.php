@@ -13,10 +13,7 @@
         <div>
             <div class="post-desc">
                 <h1><a href="postpage?id=<?= $post->getIdPost() ?>"> <?= $post->getTitle() ?> </a></h1>
-                <h1> <?
-                    $rep = new UserRepository();
-                    echo $rep->getUsernameFromId($post->getIdUserOwner());
-                    ?> </h1>
+                <h1> <?= $post->getUserOwner()?> </h1>
 
                 <p> <?= $post->getDescription() ?></p>
             </div>
