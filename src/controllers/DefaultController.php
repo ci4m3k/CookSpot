@@ -12,6 +12,11 @@ class DefaultController extends AppController {
             }
             $this->redirect('mainpage');
         }
+
+        public function error(): void
+        {
+            $this->render('error');
+        }
     
     
 }

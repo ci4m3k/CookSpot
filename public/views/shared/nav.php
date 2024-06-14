@@ -1,6 +1,7 @@
 
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/nav.css">
+    <script type="text/javascript" src="./public/js/nav.js" defer></script>
 
 <nav>
             <img src="/img/logo3.png" alt="LOGO ALT">
@@ -37,3 +38,5 @@
             </ul>
 
         </nav>
+
+        <button id="toggleNavButton">MENU</button>

@@ -43,3 +43,31 @@ li {
     text-align: left;
     margin-bottom: 0.5em;
 }
+
+
+#toggleNavButton {
+    position: fixed;
+    bottom: 40px; /* Adjust the distance from the bottom of the viewport */
+    right: 40px;  /* Adjust the distance from the right of the viewport */
+    background-color: #FB8A22; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    z-index: 1000; /* Ensure the button is above other elements */
+    font-size: 20px;
+}
+
+#toggleNavButton:hover {
+    background-color: #bd691a; /* Darker background on hover */
+}
+
+@media screen and (max-width: 600px) {
+    nav{
+        display: none;
+        width: 80%;
+        background-color: #151e26;
+    }
+}

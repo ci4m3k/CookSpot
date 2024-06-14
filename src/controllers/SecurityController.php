@@ -60,6 +60,10 @@ class SecurityController extends AppController
         $password =$_POST['password'];
         $conf_password = $_POST['conf_password'];
 
+        if ($username==""){
+            return $this->render('createaccount', ['messages' => ['Email is empty']]);
+        }
+
         if ($this->userRepository->isEmailUsed($email)){
             return $this->render('createaccount', ['messages' => ['This email is already taken']]);
         }

@@ -5,6 +5,7 @@ require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/PostController.php';
 require_once 'src/controllers/UserController.php';
 require_once 'src/controllers/BookmarkController.php';
+require_once 'src/controllers/ErrorController.php';
 
 class Routing
 {
@@ -28,7 +29,8 @@ class Routing
         $action = $urlParts[0];
 
         if (!array_key_exists($action, self::$routes)) {
-            die("Wrong url!");
+            ErrorController::getInstance()->error();
+            return;
         }
 
         $controller = self::$routes[$action];

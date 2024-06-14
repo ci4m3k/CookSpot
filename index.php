@@ -60,6 +60,7 @@ Routing::get('', 'DefaultController');
 Routing::get('index', 'DefaultController');
 Routing::post('login', 'SecurityController');
 Routing::post('createaccount', 'SecurityController');
+Routing::get('error','DefaultController');
 
 Routing::run($path);
 
