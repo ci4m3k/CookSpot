@@ -78,7 +78,7 @@ class PostController extends AppController
             $uniquePostId = uniqid('', true);
 
             $id_user_owner = $this->sessionInfo->getIdUserFromSession();
-            $user_owner = $this->getUsernameFromSession();
+            $user_owner = $this->sessionInfo->getUsernameFromSession();
 
 
             date_default_timezone_set('Europe/Warsaw');
@@ -170,15 +170,6 @@ class PostController extends AppController
             return $this->render('post-page', ['messages' => $this->message, 'post' => $post, 'rate' => $rate, 'book' => $book, 'category' => $category]);
     }
     
-
-
-    protected function getUsernameFromSession(): ?string
-    {
-        if (!isset($_SESSION['user'])) {
-            return null;
-        }
-        return unserialize($_SESSION['user'])->getUsername();
-    }
 
 
 
