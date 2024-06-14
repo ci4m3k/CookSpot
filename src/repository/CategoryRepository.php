@@ -15,7 +15,7 @@ class CategoryRepository extends Repository
 
         $stmt = $this->database->connect()->prepare('
 
-            SELECT * FROM post_categories;
+            SELECT * FROM categories;
 
         ');
 
@@ -98,4 +98,30 @@ class CategoryRepository extends Repository
         );
 
     }
+
+    public function getPostsListFromIdCategory($id_category){
+        $stmt = $this->database->connect()->prepare('
+
+        SELECT * FROM post_categories WHERE id_category= :id_category;
+
+        ');
+
+        $stmt->bindParam(':id_category', $id_category, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($categories == false) {
+            return null;
+        }
+
+     
+        //var_dump($categories());
+        foreach ($categories as $category) {
+            $result[] = $category['id_post'];
+        }
+        return $result;
+
+    }
+
 }

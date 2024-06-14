@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="public/css/post.css">
     <link rel="stylesheet" type="text/css" href="public/css/nav.css">
     
-    <title>MAIN</title>
 </head>
 
 <body>
@@ -19,26 +18,33 @@
         <main> 
            
 
-            <div class="header message"> 
+            <div class="header"> 
                 <div>
-                    <h1 class="welcome-text">
-                    <?
-                    if(isset($message)){
-                        echo $message;
-                    } else {
-                        echo 'What would you like to cook today?';
-                    }
-                    ?>
-                    </h1>
+                    <h1 class="welcome-text">Explore our Categories</h1>
                 </div>
                 
                 <?php include_once __DIR__ . '/shared/search-bar.php' ?>
 
             </div>
 
-            <?php include_once __DIR__ . '/shared/display-posts.php' ?>
+<section class="posts categories">
+
+    <?php foreach($categories as $category): ?>
+        <div id="<?= $category->getIdCategory() ?>" >
+            <img src="/img/category/<?= $category->getIdCategory()?>.jpg" alt="category image">
+            <div class="category-desc">
+                <h1><a href="categorypage?id=<?= $category->getIdCategory()?>"> <?= $category->getCategoryName() ?> </a></h1>
+                <p class="category"> <?= $category->getCategoryDesc() ?></p>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+    
+</section>
+
+
         </main  >
-    </div>
+
     
 
 

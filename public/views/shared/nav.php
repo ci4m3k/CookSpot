@@ -9,7 +9,7 @@
                     <a href="/mainpage" class="button">Home</a>
                 </li>
                 <li>
-                    <a href="#" class="button">Explore</a>
+                    <a href="/explore" class="button">Explore</a>
                 </li>
                 <li>
                     <a href="bookmarks" class="button">Bookmarks</a>
