@@ -39,22 +39,22 @@
         <div class="post-icons-interactive">
             <div class="likes-dislikes">
                 <div class="like" >
-                    <i id="thumblike" class="material-symbols-outlined <?if($rate == 1){echo 'pressed';}?>">thumb_up</i> 
+                    <i id="thumblike" class="material-symbols-outlined hover <?if($rate == 1){echo 'pressed';}?>">thumb_up</i> 
                 </div>
 
                 <div class="dislike">
-                    <i id="thumbdislike" class="material-symbols-outlined thumb <?if($rate == -1){echo 'pressed';}?>">thumb_down</i>
+                    <i id="thumbdislike" class="material-symbols-outlined thumb hover <?if($rate == -1){echo 'pressed';}?>">thumb_down</i>
                 </div>
             </div>
             
             <div class="bookmark-container">
 
                  <div class="bookmark-text">
-                    <span id="bookmark-text">Bookmark</span>
+                    <span id="bookmark-text" class="<?if($book){echo 'pressed';}?>"><?if($book){echo 'Bookmarked';}else{echo 'Bookmark';}?></span>
                 </div>
 
                 <div class="bookmark">
-                    <i class="bookmark material-symbols-outlined <?if($book){echo 'pressed';}?>" id="bookmark">bookmark</i>
+                    <i class="bookmark material-symbols-outlined hover <?if($book){echo 'pressed';}?>" id="bookmark">bookmark</i>
                 </div>
                 
                

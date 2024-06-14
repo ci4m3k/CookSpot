@@ -101,6 +101,10 @@ p.date {
     font-size: 0.7em;
 }
 
+i.hover:hover{
+    cursor: pointer;
+}
+
 
 .post-icons-interactive {
     display: flex;
