@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/nav.css">
     <script src="./public/js/categories.js"></script>
     
-    <title>MAIN</title>
+
 </head>
 
 <body>
@@ -21,7 +21,9 @@
            
 
             <div class="header">               
-                <?php include_once __DIR__ . '/shared/search-bar.php' ?>
+                <div>
+                    <h1 class="welcome-text">Add Post</h1>
+                </div>  
             </div>
 
             <section>

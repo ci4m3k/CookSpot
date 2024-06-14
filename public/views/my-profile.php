@@ -22,7 +22,7 @@
                     <h1 class="welcome-text">My Profile</h1>
                 </div>
                 
-                <?php include_once __DIR__ . '/shared/search-bar.php' ?>
+                
 
             </div>
 

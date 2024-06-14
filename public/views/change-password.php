@@ -20,7 +20,7 @@
            
 
             <div class="header">               
-                <?php include_once __DIR__ . '/shared/search-bar.php' ?>
+               
             </div>
 
             <section>
