@@ -6,7 +6,8 @@
 
 
 
-<section class="posts">
+<section class="posts rate">
+<?=$rate?>
     <div id="<?= $post->getIdPost() ?>">
         <div class="post-content">
             <img src="/public/uploads/<?= $post->getImage() ?>" alt="post image">
@@ -37,12 +38,14 @@
 
         <div class="post-icons-interactive">
 
-            <div class="like">
-                <span class="like-count"><?= $post->getLike() ?></span><i class="material-symbols-outlined">thumb_up</i> 
+            <div class="like " >
+                <!-- <span class="like-count"><?= $post->getLike() ?></span> -->
+                <i id="thumblike" class="material-symbols-outlined <?if($rate == 1){echo 'pressed';}?>">thumb_up</i> 
             </div>
 
             <div class="dislike">
-                <i class="material-symbols-outlined">thumb_down</i><span class="dislike-count"><?=$post->getDislike() ?></span>
+                <i id="thumbdislike" class="material-symbols-outlined thumb <?if($rate == -1){echo 'pressed';}?>">thumb_down</i>
+                <!-- <span class="dislike-count"><?=$post->getDislike() ?></span> -->
             </div>
             
             <div>

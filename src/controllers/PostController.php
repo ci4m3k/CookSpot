@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Post.php';
 require_once __DIR__.'/../repository/PostRepository.php';
+require_once __DIR__.'/../repository/RatingRepository.php';
 
 class PostController extends AppController
 {
@@ -12,11 +13,13 @@ class PostController extends AppController
     
     private $message = [];
     private $postRepository;
+    private $ratingRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->postRepository = new PostRepository();
+        $this->ratingRepository = new RatingRepository();
     }
 
 
@@ -104,8 +107,10 @@ class PostController extends AppController
     public function postpage() {
         if ($this->isGet() && isset($_GET['id'])) {
             $id_post = $_GET['id'];
+            $id_user = $this->getIdUserFromSession();
+            $rate = $this->ratingRepository->getRatingScore($id_user, $id_post);
             $post = $this->postRepository->getPost($id_post);
-            return $this->render('post-page', ['messages' => $this->message, 'post' => $post]);
+            return $this->render('post-page', ['messages' => $this->message, 'post' => $post, 'rate' => $rate]);
             
             
         } else {
@@ -149,15 +154,80 @@ class PostController extends AppController
         }
     }
 
-    public function like(string $id) {
-        $this->postRepository->like($id);
-        http_response_code(200);
-        var_dump("like");
+    public function like(string $id_post) {
+
+        $id_user = $this->getIdUserFromSession();
+
+        if(!$this->ratingRepository->isRatedByUser($id_user, $id_post)){
+            $rate = new Rating($id_user, $id_post, 0);
+            $this->ratingRepository->addRating($rate);
+            var_dump('1if'.!$this->ratingRepository->isRatedByUser($id_user, $id_post));
+        }
+        
+        $score = $this->ratingRepository->getRatingScore($id_user, $id_post);
+
+        if($score == 0)
+        {
+            $this->ratingRepository->like($id_user, $id_post);
+            $this->postRepository->like($id_post);
+            var_dump('like');
+            http_response_code(200);
+        } 
+        elseif($score == 1)
+        {
+            $this->postRepository->unlike($id_post);
+            $this->ratingRepository->undoRating($id_user, $id_post);
+            var_dump('unlike');
+            http_response_code(200);
+        } 
+        elseif($score == -1)
+        {
+            $this->postRepository->undislike($id_post);
+            $this->postRepository->like($id_post);
+            $this->ratingRepository->like($id_user, $id_post);
+            var_dump('undislike like');
+            http_response_code(200);
+        }
+        var_dump('end like');
+
+        
     }
 
-    public function dislike(string $id) {
-        $this->postRepository->dislike($id);
-        http_response_code(200);
+    public function dislike(string $id_post) {
+        $id_user = $this->getIdUserFromSession();
+
+        if(!$this->ratingRepository->isRatedByUser($id_user, $id_post)){
+            $rate = new Rating($id_user, $id_post, 0);
+            $this->ratingRepository->addRating($rate);
+            var_dump('1if'.!$this->ratingRepository->isRatedByUser($id_user, $id_post));
+        }
+        
+        $score = $this->ratingRepository->getRatingScore($id_user, $id_post);
+
+        if($score == 0)
+        {
+            $this->ratingRepository->dislike($id_user, $id_post);
+            $this->postRepository->dislike($id_post);
+            var_dump('dislike');
+            http_response_code(200);
+        } 
+        elseif($score == -1)
+        {
+            $this->postRepository->undislike($id_post);
+            $this->ratingRepository->undoRating($id_user, $id_post);
+            var_dump('undislike');
+            http_response_code(200);
+        } 
+        elseif($score == 1)
+        {
+            $this->postRepository->dislike($id_post);
+            $this->postRepository->unlike($id_post);
+            $this->ratingRepository->dislike($id_user, $id_post);
+            var_dump('unlike dislike');
+            http_response_code(200);
+        }
+        var_dump('end dislike');
+
     }
 
 

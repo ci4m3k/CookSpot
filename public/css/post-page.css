@@ -112,6 +112,10 @@ p.date {
     visibility: hidden;
 }
 
+.pressed{
+    color: aqua;
+}
+
 @media screen and (max-width: 600px) {
 
     .post-content {
