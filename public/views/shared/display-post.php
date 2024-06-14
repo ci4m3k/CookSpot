@@ -15,10 +15,10 @@
             <div class="post-icons">
                 <div>
                     <i class="material-symbols-outlined">account_circle</i>
-                    <span><?= $post->getUserOwner()?></span>
+                    <!-- <span><?= $post->getUserOwner()?></span> -->
                 </div>
 
-                <div class="place-holder">xxx</div>
+                <span><?= $post->getUserOwner()?></span>
                 <div class="place-holder">xxx</div>
                 <div>
                     <i class="material-symbols-outlined">signal_cellular_alt</i>
@@ -36,22 +36,27 @@
         </div>
 
         <div class="post-icons-interactive">
+            <div class="likes-dislikes">
+                <div class="like" >
+                    <i id="thumblike" class="material-symbols-outlined <?if($rate == 1){echo 'pressed';}?>">thumb_up</i> 
+                </div>
 
-            <div class="like " >
-                <!-- <span class="like-count"><?= $post->getLike() ?></span> -->
-                <i id="thumblike" class="material-symbols-outlined <?if($rate == 1){echo 'pressed';}?>">thumb_up</i> 
-            </div>
-
-            <div class="dislike">
-                <i id="thumbdislike" class="material-symbols-outlined thumb <?if($rate == -1){echo 'pressed';}?>">thumb_down</i>
-                <!-- <span class="dislike-count"><?=$post->getDislike() ?></span> -->
+                <div class="dislike">
+                    <i id="thumbdislike" class="material-symbols-outlined thumb <?if($rate == -1){echo 'pressed';}?>">thumb_down</i>
+                </div>
             </div>
             
-            <div>
-                <i class="material-symbols-outlined" id="bookmark">bookmark</i><span></span>
+            <div class="bookmark-container">
+                
+                <div class="bookmark">
+                    <i class="bookmark material-symbols-outlined" id="bookmark">bookmark</i>
+                </div>
+                
+                <div class="bookmark-text">
+                    <span>Bookmark</span>
+                </div>
             </div>
         </div>
-
 
         <div class="post-desc">
             <p class="date"> Posted on: <?= $post->getCreatedAt() ?>

@@ -44,7 +44,3 @@ document.querySelectorAll(".dislike").forEach(button => {
 likeButtons.forEach(button => button.addEventListener("click", giveLike));
 dislikeButtons.forEach(button => button.addEventListener("click", giveDislike));
 
-// function toggleColor(){
-//     const thumb = this.querySelectorAll("#thumb");
-//     thumb.classList.toggle("pressed");
-// }
