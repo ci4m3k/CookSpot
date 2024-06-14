@@ -5,6 +5,7 @@ require_once __DIR__.'/../models/Post.php';
 require_once __DIR__.'/../repository/PostRepository.php';
 require_once __DIR__.'/../repository/RatingRepository.php';
 require_once __DIR__.'/../repository/BookmarkRepository.php';
+require_once __DIR__.'/../repository/CategoryRepository.php';
 
 class PostController extends AppController
 {
@@ -16,6 +17,7 @@ class PostController extends AppController
     private $postRepository;
     private $ratingRepository;
     private $bookmarkRepository;
+    private $categoryRepository;
 
     public function __construct()
     {
@@ -23,6 +25,7 @@ class PostController extends AppController
         $this->postRepository = new PostRepository();
         $this->ratingRepository = new RatingRepository();
         $this->bookmarkRepository = new BookmarkRepository();
+        $this->categoryRepository = new CategoryRepository();
     }
 
 
@@ -72,7 +75,7 @@ class PostController extends AppController
             // Add the post to the database
             $this->postRepository->addPost($new_post);
 
-            $this->postRepository->addCategories($new_post->getIdPost(), $_POST['categories']);
+            $this->categoryRepository->addCategories($new_post->getIdPost(), $_POST['categories']);
 
             // Render the post page with the new post data
             return $this->render('post-page', ['messages' => $this->message, 'post' => $new_post]);
@@ -114,7 +117,8 @@ class PostController extends AppController
             $rate = $this->ratingRepository->getRatingScore($id_user, $id_post);
             $post = $this->postRepository->getPost($id_post);
             $book = $this->bookmarkRepository->isBookmarkedByUser($id_user, $id_post);
-            return $this->render('post-page', ['messages' => $this->message, 'post' => $post, 'rate' => $rate, 'book' => $book]);
+            $category = $this->categoryRepository->getPostCategoriesList($id_post);
+            return $this->render('post-page', ['messages' => $this->message, 'post' => $post, 'rate' => $rate, 'book' => $book, 'category' => $category]);
             
             
         } else {

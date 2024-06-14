@@ -10,13 +10,13 @@ class BookmarkRepository extends Repository
 
     public function addBookmark(Bookmark $bookmark): void
     {
-$stmt = $this->database->connect()->prepare('
-    INSERT INTO bookmarks (
-        id_user,
-        id_post
-        )
-    VALUES (?, ?)
-');
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO bookmarks (
+                id_user,
+                id_post
+                )
+            VALUES (?, ?)
+        ');
 
         $stmt->execute([
             $bookmark->getIdUser(),

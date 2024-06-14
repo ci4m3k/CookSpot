@@ -7,7 +7,7 @@
 
 
 
-<section class="posts rate book">
+<section class="posts rate book category">
     <div id="<?= $post->getIdPost() ?>">
         <div class="post-content">
             <img src="/public/uploads/<?= $post->getImage() ?>" alt="post image">
@@ -69,10 +69,8 @@
             </h1>
 
             <h4><?
-                $rep = new PostRepository;
-                $categories = $rep->getPostCategoriesList($post->getIdPost());
-                foreach($categories as $category): 
-                    echo '#'.$category->getCategoryName().' ';
+                foreach($category as $cat): 
+                    echo '#'.$cat->getCategoryName().' ';
                 endforeach;
             ?></h4>
 
