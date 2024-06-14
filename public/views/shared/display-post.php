@@ -7,7 +7,6 @@
 
 
 <section class="posts rate">
-<?=$rate?>
     <div id="<?= $post->getIdPost() ?>">
         <div class="post-content">
             <img src="/public/uploads/<?= $post->getImage() ?>" alt="post image">
