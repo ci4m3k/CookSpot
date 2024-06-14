@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/add-post.css">
     <link rel="stylesheet" type="text/css" href="public/css/nav.css">
-    <script src="./public/js/categories.js"></script>
+    <script src="./public/js/categories.js" defer></script>
     
 
 </head>
@@ -43,14 +43,14 @@
 
                 <div class="lists">
                     <select name="difficulty" class="input-text">
-                        <option value="empty">Difficulty level</option>
+                        <option value="">Difficulty level</option>
                         <option value="easy">easy</option>
                         <option value="medium">medium</option>
                         <option value="hard">hard</option>
                     </select>
 
                     <select name="prep_time" class="input-text">
-                        <option value="empty">Preparation time</option>
+                        <option value="">Preparation time</option>
                         <option value="5min">5 minutes</option>
                         <option value="10min">10 minutes</option>
                         <option value="15min">15 minutes</option>
@@ -66,7 +66,7 @@
                     </select>
 
                     <select name="number_of_servings"  class="input-text">
-                        <option value="empty" >Number of servings </option>
+                        <option value="" >Number of servings </option>
                         <option value="1" >For 1 </option>
                         <option value="2" >For 2 </option>
                         <option value="3" >For 3 </option>

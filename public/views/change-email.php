@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/add-post.css">
     <link rel="stylesheet" type="text/css" href="public/css/nav.css">
+    <script type="text/javascript" src="./public/js/email.js" defer></script>
     
 
 </head>

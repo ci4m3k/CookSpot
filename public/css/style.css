@@ -97,6 +97,10 @@ main{
     color: #ffffff;
 }
 
+.no-valid {
+   border-color: red !important;
+}
+
 
 @media screen and (max-width: 1200px) {
     .background-border{

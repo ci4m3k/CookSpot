@@ -31,6 +31,8 @@ class PostController extends AppController
 
     public function addPost()
     {   
+        $message = [];
+        $categories = $this->categoryRepository->getCategoriesList();
         if ($this->isPost() && is_uploaded_file($_FILES['image']['tmp_name']) && $this->validate($_FILES['image'])) {
             // Get the original file extension
             $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
@@ -43,6 +45,31 @@ class PostController extends AppController
                 $_FILES['image']['tmp_name'],          
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$uniqueFileName
             );
+
+            $requiredKeys = [
+                'title',
+                'description',
+                'ingredients',
+                'recipe',
+                'prep_time',
+                'difficulty',
+                'number_of_servings'
+            ];
+
+            $hasNull = false;
+
+            // Iterate over the required keys and check for null values
+            foreach ($requiredKeys as $key) {
+                if (!isset($_POST[$key]) || $_POST[$key] === '') {
+                    $hasNull = true;
+                    $message[] = ($key . " is null");
+                }
+            }
+
+            if ($hasNull) {
+                return $this->render('add-post', ['messages' => $this->$message, 'categories' => $categories]);  
+            }
+
 
             // Generate a unique id for post
             $uniquePostId = uniqid('', true);
@@ -83,8 +110,6 @@ class PostController extends AppController
             return $this->postpageFromIdPost($new_post->getIdPost());
 
         }
-        
-        $categories = $this->categoryRepository->getCategoriesList();
         return $this->render('add-post', ['messages' => $this->message, 'categories' => $categories]);       
     }
 
