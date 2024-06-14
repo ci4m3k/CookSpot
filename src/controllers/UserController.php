@@ -5,6 +5,7 @@ require_once __DIR__.'/../models/Post.php';
 require_once __DIR__.'/../repository/PostRepository.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 require_once __DIR__.'/../repository/UserDetailsRepository.php';
+require_once __DIR__.'/../services/SessionInfo.php';
 
 
 class UserController extends AppController
@@ -14,28 +15,22 @@ class UserController extends AppController
     private $postRepository;
     private $userRepository;
     private $userDetailsRepository;
+    private $sessionInfo;
 
     public function __construct()
     {
         parent::__construct();
+        $this->sessionInfo = new SessionInfo();
         $this->postRepository = new PostRepository();
         $this->userRepository = new UserRepository();
         $this->userDetailsRepository = new UserDetailsRepository();
     }
 
-    //TODO it propoble should be in different file 
-    protected function getIdUserFromSession(): ?string
-    {
-        if (!isset($_SESSION['user'])) {
-            return null;
-        }
-        return unserialize($_SESSION['user'])->getIdUser();
-    }
 
 
     public function myprofile() 
     {
-        $id = $this->getIdUserFromSession();
+        $id = $this->sessionInfo->getIdUserFromSession();
         $posts = $this->postRepository->getPostsByIdUserOwner($id);
         $user = $this->userRepository->getUserFromIdUser($id);
         $user_details = $this->userDetailsRepository->getUserDetails($id);
@@ -49,7 +44,7 @@ class UserController extends AppController
 
             // Generate a unique id for users_details
             $unique_id_users_details = uniqid('', true);
-            $id_user = $this->getIdUserFromSession();
+            $id_user = $this->sessionInfo->getIdUserFromSession();
 
             // Create a new UserDetails object 
             $user_details = new UserDetails(
@@ -89,7 +84,7 @@ class UserController extends AppController
     {
 
         if ($this->isPost()) {
-            $id_user = $this->getIdUserFromSession();
+            $id_user = $this->sessionInfo->getIdUserFromSession();
             $this->userRepository->updateUsername($id_user, $_POST['username']);
             return $this->myprofile();
         }
@@ -102,7 +97,7 @@ class UserController extends AppController
     {
 
         if ($this->isPost()) {
-            $id_user = $this->getIdUserFromSession();
+            $id_user = $this->sessionInfo->getIdUserFromSession();
             $this->userRepository->updateEmail($id_user, $_POST['email']);
             return $this->myprofile();
         }

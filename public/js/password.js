@@ -1,4 +1,4 @@
-alert('FUUUCK');
+
 const form = document.querySelector("form");
 const confirmedPasswordInput = form.querySelector('input[name="conf_password"]');
 

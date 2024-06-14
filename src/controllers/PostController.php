@@ -6,6 +6,7 @@ require_once __DIR__.'/../repository/PostRepository.php';
 require_once __DIR__.'/../repository/RatingRepository.php';
 require_once __DIR__.'/../repository/BookmarkRepository.php';
 require_once __DIR__.'/../repository/CategoryRepository.php';
+require_once __DIR__.'/../services/SessionInfo.php';
 
 class PostController extends AppController
 {
@@ -18,6 +19,7 @@ class PostController extends AppController
     private $ratingRepository;
     private $bookmarkRepository;
     private $categoryRepository;
+    private $sessionInfo;
 
     public function __construct()
     {
@@ -26,6 +28,7 @@ class PostController extends AppController
         $this->ratingRepository = new RatingRepository();
         $this->bookmarkRepository = new BookmarkRepository();
         $this->categoryRepository = new CategoryRepository();
+        $this->sessionInfo = new SessionInfo();
     }
 
 
@@ -74,7 +77,7 @@ class PostController extends AppController
             // Generate a unique id for post
             $uniquePostId = uniqid('', true);
 
-            $id_user_owner = $this->getIdUserFromSession();
+            $id_user_owner = $this->sessionInfo->getIdUserFromSession();
             $user_owner = $this->getUsernameFromSession();
 
 
@@ -143,7 +146,7 @@ class PostController extends AppController
     public function postpage() {
         if ($this->isGet() && isset($_GET['id'])) {
             $id_post = $_GET['id'];
-            $id_user = $this->getIdUserFromSession();
+            $id_user = $this->sessionInfo->getIdUserFromSession();
             $rate = $this->ratingRepository->getRatingScore($id_user, $id_post);
             $post = $this->postRepository->getPost($id_post);
             $book = $this->bookmarkRepository->isBookmarkedByUser($id_user, $id_post);
@@ -159,7 +162,7 @@ class PostController extends AppController
     }
     
     public function postpageFromIdPost(string $id_post) {          
-            $id_user = $this->getIdUserFromSession();
+            $id_user = $this->sessionInfo->getIdUserFromSession();
             $rate = $this->ratingRepository->getRatingScore($id_user, $id_post);
             $post = $this->postRepository->getPost($id_post);
             $book = $this->bookmarkRepository->isBookmarkedByUser($id_user, $id_post);
@@ -168,14 +171,6 @@ class PostController extends AppController
     }
     
 
-    //TODO it propoble should be in different file 
-    protected function getIdUserFromSession(): ?string
-    {
-        if (!isset($_SESSION['user'])) {
-            return null;
-        }
-        return unserialize($_SESSION['user'])->getIdUser();
-    }
 
     protected function getUsernameFromSession(): ?string
     {
@@ -204,7 +199,7 @@ class PostController extends AppController
 
     public function like(string $id_post) {
 
-        $id_user = $this->getIdUserFromSession();
+        $id_user = $this->sessionInfo->getIdUserFromSession();
 
         if(!$this->ratingRepository->isRatedByUser($id_user, $id_post)){
             $rate = new Rating($id_user, $id_post, 0);
@@ -242,7 +237,7 @@ class PostController extends AppController
     }
 
     public function dislike(string $id_post) {
-        $id_user = $this->getIdUserFromSession();
+        $id_user = $this->sessionInfo->getIdUserFromSession();
 
         if(!$this->ratingRepository->isRatedByUser($id_user, $id_post)){
             $rate = new Rating($id_user, $id_post, 0);

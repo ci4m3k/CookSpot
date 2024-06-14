@@ -3,16 +3,19 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../services/SessionInfo.php';
 
 class SecurityController extends AppController
 {
 
     private $userRepository;
+    private $sessionInfo;
 
     public function __construct()
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
+        $this->sessionInfo = new SessionInfo();
     }
 
 
@@ -88,7 +91,7 @@ class SecurityController extends AppController
             return $this->render('change-password');
         }
 
-        $user = $this->userRepository->getUserFromIdUser($this->getIdUserFromSession());
+        $user = $this->userRepository->getUserFromIdUser($this->sessionInfo->getIdUserFromSession());
 
         
         $password =$_POST['password'];
@@ -110,14 +113,6 @@ class SecurityController extends AppController
         return $this->render('login', ['messages' => ['Your password got succesfully changed! ']]);
     }
 
-    //TODO it propoble should be in different file 
-    protected function getIdUserFromSession(): ?string
-    {
-        if (!isset($_SESSION['user'])) {
-            return null;
-        }
-        return unserialize($_SESSION['user'])->getIdUser();
-    }
 
 
 
