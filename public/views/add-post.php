@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="base-container" id="bimg" >
+    <div class="base-container categories" id="bimg" >
         <?php include_once __DIR__ . '/shared/nav.php' ?>
 
         <main> 
@@ -97,9 +97,6 @@
                         <div class="checkbox-dropdown" id="checkboxDropdown" >
                             <input type="text" class="search-input" placeholder="Search..." onkeyup="filterOptions()">
                             <!-- <label><input type="checkbox" name="categories[]" value="Category 1"> Category 1</label> -->
-                            <?
-                            $rep = new PostRepository();
-                            $categories = $rep->getCategoriesList(); ?>
                             <?php  foreach($categories as $category): ?>
                                 <label><input type="checkbox" name="categories[]" value="<?= $category->getIdCategory() ?>"> <?= $category->getCategoryName()?></label>
                             <?php endforeach; ?>

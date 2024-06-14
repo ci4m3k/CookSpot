@@ -20,7 +20,17 @@
                 <li>
                     <a href="/addpost" class="button">Add Post</a>
                 </li>
+                <?
 
+                if(isAdmin()){
+                    echo '
+                        <li>
+                            <a href="/dislikedposts" class="button">Disliked Posts</a>
+                        </li>
+                    ';
+                }
+                
+                ?>
                 <li class="end">
                     <a href="/logout" class="button">Logout</a>
                 </li>

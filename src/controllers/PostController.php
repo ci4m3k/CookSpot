@@ -78,9 +78,14 @@ class PostController extends AppController
             $this->categoryRepository->addCategories($new_post->getIdPost(), $_POST['categories']);
 
             // Render the post page with the new post data
-            return $this->render('post-page', ['messages' => $this->message, 'post' => $new_post]);
+            //return $this->render('post-page', ['messages' => $this->message, 'post' => $new_post]);
+            //$this->render('post-page', ['messages' => $this->message, 'id' => $new_post->getIdPost()]);
+            return $this->postpageFromIdPost($new_post->getIdPost());
+
         }
-        return $this->render('add-post', ['messages' => $this->message,]);       
+        
+        $categories = $this->categoryRepository->getCategoriesList();
+        return $this->render('add-post', ['messages' => $this->message, 'categories' => $categories]);       
     }
 
 
@@ -126,6 +131,15 @@ class PostController extends AppController
             echo "Post ID is not specified.";
             //$this -> render('post-page');
         }
+    }
+    
+    public function postpageFromIdPost(string $id_post) {          
+            $id_user = $this->getIdUserFromSession();
+            $rate = $this->ratingRepository->getRatingScore($id_user, $id_post);
+            $post = $this->postRepository->getPost($id_post);
+            $book = $this->bookmarkRepository->isBookmarkedByUser($id_user, $id_post);
+            $category = $this->categoryRepository->getPostCategoriesList($id_post);
+            return $this->render('post-page', ['messages' => $this->message, 'post' => $post, 'rate' => $rate, 'book' => $book, 'category' => $category]);
     }
     
 

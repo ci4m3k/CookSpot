@@ -89,6 +89,17 @@
             </p>
             
         </div>
+        <div id="admin">
+        <?
+            if(isAdmin()){
+                echo '
+                        <a href="/deletepost?id='.$post->getIdPost().'" class="button">Delete That Post</a>
+                ';
+            }
+
+        ?>
+        </div>
+
         <div class="stars">
         <i class="material-symbols-outlined">star</i>
         <i class="material-symbols-outlined">star</i>

@@ -66,5 +66,7 @@ class User
     public function setUsername(string $username): void {
         $this->username = $username;
     }
+
+
 }
 ?>

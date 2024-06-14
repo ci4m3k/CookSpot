@@ -105,6 +105,22 @@ i.hover:hover{
     cursor: pointer;
 }
 
+div#admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div#admin > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2em;
+    width: 40%;
+    border-color: red;
+}
+
+
 
 .post-icons-interactive {
     display: flex;

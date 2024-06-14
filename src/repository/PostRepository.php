@@ -134,12 +134,6 @@ class PostRepository extends Repository
 
 
 
-
-
-
-
-    
-
     public function getPostsByIdUserOwner(string $id_user_owner): array
     {
 
@@ -258,6 +252,67 @@ class PostRepository extends Repository
       $stmt->bindParam(':id_post', $id_post, PDO::PARAM_INT);
       $stmt->execute();
   }
+
+
+
+
+  public function getDislikedPosts(): array
+    {
+
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+
+            SELECT
+                posts.*,
+                users.username
+            FROM
+                posts
+            LEFT JOIN
+                users
+            ON
+                posts.id_user_owner = users.id_user
+            ORDER BY
+                posts.dislike DESC;
+
+        ');
+
+        $stmt->execute();
+
+        $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($posts as $post) {
+            $result[] = new Post(
+                $post['id_post'],
+                $post['id_user_owner'],
+                $post['username'],
+                $post['title'],
+                $post['description'],
+                $post['ingredients'],
+                $post['recipe'],
+                $post['image'],
+                $post['prep_time'],
+                $post['difficulty'],
+                $post['number_of_servings'],
+                $post['created_at'],
+                $post['like'],
+                $post['dislike'],
+            );
+        }
+        return $result;
+    }
+
+    public function deletePost(string $id_post): void{
+        
+        $stmt = $this->database->connect()->prepare('
+        DELETE FROM posts
+        WHERE 
+            id_post = ?
+    ');
+
+    $stmt->execute([
+        $id_post
+    ]);
+    }
 
 
 }
