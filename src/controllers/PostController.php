@@ -4,6 +4,7 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/Post.php';
 require_once __DIR__.'/../repository/PostRepository.php';
 require_once __DIR__.'/../repository/RatingRepository.php';
+require_once __DIR__.'/../repository/BookmarkRepository.php';
 
 class PostController extends AppController
 {
@@ -14,12 +15,14 @@ class PostController extends AppController
     private $message = [];
     private $postRepository;
     private $ratingRepository;
+    private $bookmarkRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->postRepository = new PostRepository();
         $this->ratingRepository = new RatingRepository();
+        $this->bookmarkRepository = new BookmarkRepository();
     }
 
 
@@ -110,7 +113,8 @@ class PostController extends AppController
             $id_user = $this->getIdUserFromSession();
             $rate = $this->ratingRepository->getRatingScore($id_user, $id_post);
             $post = $this->postRepository->getPost($id_post);
-            return $this->render('post-page', ['messages' => $this->message, 'post' => $post, 'rate' => $rate]);
+            $book = $this->bookmarkRepository->isBookmarkedByUser($id_user, $id_post);
+            return $this->render('post-page', ['messages' => $this->message, 'post' => $post, 'rate' => $rate, 'book' => $book]);
             
             
         } else {
@@ -120,6 +124,7 @@ class PostController extends AppController
         }
     }
     
+
     //TODO it propoble should be in different file 
     protected function getIdUserFromSession(): ?string
     {
@@ -229,6 +234,10 @@ class PostController extends AppController
         var_dump('end dislike');
 
     }
+
+
+
+
 
 
 

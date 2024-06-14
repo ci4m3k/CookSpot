@@ -3,10 +3,11 @@
 <link rel="stylesheet" type="text/css" href="public/css/post-page.css">
 
 <script type="text/javascript" src="./public/js/statistics.js" defer></script>
+<script type="text/javascript" src="./public/js/bookmarks.js" defer></script>
 
 
 
-<section class="posts rate">
+<section class="posts rate book">
     <div id="<?= $post->getIdPost() ?>">
         <div class="post-content">
             <img src="/public/uploads/<?= $post->getImage() ?>" alt="post image">
@@ -47,14 +48,16 @@
             </div>
             
             <div class="bookmark-container">
-                
+
+                 <div class="bookmark-text">
+                    <span id="bookmark-text">Bookmark</span>
+                </div>
+
                 <div class="bookmark">
-                    <i class="bookmark material-symbols-outlined" id="bookmark">bookmark</i>
+                    <i class="bookmark material-symbols-outlined <?if($book){echo 'pressed';}?>" id="bookmark">bookmark</i>
                 </div>
                 
-                <div class="bookmark-text">
-                    <span>Bookmark</span>
-                </div>
+               
             </div>
         </div>
 

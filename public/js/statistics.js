@@ -1,12 +1,12 @@
 const likeButtons = document.querySelectorAll("#like");
 const dislikeButtons = document.querySelectorAll("#dislike");
 
-
 document.querySelectorAll(".like").forEach(button => {
     button.addEventListener("click", function () {
         //const likes = this.querySelector(".like-count");
         const container = this.closest(".post-icons-interactive").parentElement;
         const id = container.getAttribute("id");
+        console.log('like');
 
         fetch(`/like/${id}`)
             .then(function () {
@@ -27,6 +27,7 @@ document.querySelectorAll(".dislike").forEach(button => {
         const container = this.closest(".post-icons-interactive").parentElement;
         const id = container.getAttribute("id");
 
+        console.log('dislike');
         fetch(`/dislike/${id}`)
             .then(function () {
                 //dislikes.innerHTML = parseInt(dislikes.innerHTML) ;

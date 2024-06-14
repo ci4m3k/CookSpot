@@ -27,16 +27,33 @@ class BookmarkController extends AppController{
         return unserialize($_SESSION['user'])->getIdUser();
     }
 
-    
     public function bookmarks(){
         $id_user = $this->getIdUserFromSession();
         $posts_id = $this->bookmarkRepository->getUserBookmarksList($id_user);
+        $posts = [];
         foreach($posts_id as $id_post){
             $posts[] = $this->postRepository->getPost($id_post);
         }
+        $this -> render('bookmarks',['posts' => $posts] );
 
-        return $this->render('bookmarks', ['posts' => $posts]);
- 
+    }
+
+
+    public function bookmarkpost(string $id_post) {
+        var_dump('bookmarkpost_fun');
+        $id_user = $this->getIdUserFromSession();
+        $bookmark = new Bookmark($id_user, $id_post);
+        if(!$this->bookmarkRepository->isBookmarkedByUser($id_user, $id_post)){
+            $this->bookmarkRepository->addBookmark($bookmark);
+            var_dump('add book');
+        } else {
+            $this->bookmarkRepository->removeBookmark($bookmark);
+            var_dump('remuve book');
+        }
+        
+
+
+        http_response_code(200);
     }
 
 }
