@@ -3,7 +3,6 @@ const dislikeButtons = document.querySelectorAll("#dislike");
 
 document.querySelectorAll(".like").forEach(button => {
     button.addEventListener("click", function () {
-        //const likes = this.querySelector(".like-count");
         const container = this.closest(".post-icons-interactive").parentElement;
         const id = container.getAttribute("id");
         console.log('like');
@@ -23,14 +22,12 @@ document.querySelectorAll(".like").forEach(button => {
 
 document.querySelectorAll(".dislike").forEach(button => {
     button.addEventListener("click", function () {
-        //const dislikes = this.querySelector(".dislike-count");
         const container = this.closest(".post-icons-interactive").parentElement;
         const id = container.getAttribute("id");
 
         console.log('dislike');
         fetch(`/dislike/${id}`)
             .then(function () {
-                //dislikes.innerHTML = parseInt(dislikes.innerHTML) ;
                 if(document.querySelector('#thumbdislike.pressed') == null){
                     document.querySelector('#thumbdislike').classList.add('pressed');
                 } else {

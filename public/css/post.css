@@ -72,13 +72,13 @@ section {
 }
 
 .post-icons > div:last-child {
-    margin-right: 0; /* Remove margin from the last item */
+    margin-right: 0; 
 }
 
 .material-symbols-outlined {
     color: #FB8A22;
-    font-size:  2em; /* Adjust the icon size as needed */
-    margin-right: 5px; /* Adjust the spacing between icon and text */
+    font-size:  2em; 
+    margin-right: 5px; 
 }
 
 .category {

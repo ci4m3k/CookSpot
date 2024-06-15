@@ -61,10 +61,6 @@ function createPost(post) {
     const link = clone.querySelector("#title-t");
     link.href = `postpage?id=${post.id_post}`;
 
-    
-
-
-
     postContainer.appendChild(clone);
 
 }

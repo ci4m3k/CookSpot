@@ -1,7 +1,6 @@
-// Select all bookmark buttons
 const bookmarkButtons = document.querySelectorAll("#bookmark");
 console.log('bookmark0');
-// Add click event listener to each bookmark button
+
     const button = document.querySelector(".bookmark");
 
     button.addEventListener("click", function () {
@@ -23,10 +22,6 @@ console.log('bookmark0');
                 }
             });
     });
-
-
-// Assuming saveBookmark function is defined somewhere in your code, otherwise remove this line
-//bookmarkButtons.forEach(button => button.addEventListener("click", saveBookmark));
 
 
 

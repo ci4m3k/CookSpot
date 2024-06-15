@@ -2,7 +2,6 @@
     font-size: 17px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     padding: 10px;
     margin: 10px;
     background-color: #2A3C4C;
@@ -60,18 +59,18 @@
 
 .post-desc h1 {
     margin: 0;
-    font-size: 1.5em; /* Adjust as needed */
+    font-size: 1.5em; 
 }
 
 .post-desc p {
     margin-top: 1em;
-    font-size: 1em; /* Adjust as needed */
+    font-size: 1em; 
 }
 
 .material-symbols-outlined {
     color: #FB8A22;
-    font-size:  2em; /* Adjust the icon size as needed */
-    margin-right: 5px; /* Adjust the spacing between icon and text */
+    font-size:  2em; 
+    margin-right: 5px; 
 }
 
 .post-desc h1 {
@@ -124,8 +123,8 @@ div#admin > a {
 
 .post-icons-interactive {
     display: flex;
-    justify-content: space-between; /* Space out the two main groups */
-    align-items: center; /* Align items vertically center */
+    justify-content: space-between; 
+    align-items: center; 
     width: 300px;
     font-size: 1.2em;
 }
@@ -137,11 +136,11 @@ div#admin > a {
 }
 
 .likes-dislikes > div, .bookmark-container > div {
-    margin-right: 10px; /* Optional: adjust spacing between icons */
+    margin-right: 10px; 
 }
 
 .likes-dislikes > div:last-child, .bookmark-container > div:last-child {
-    margin-right: 0; /* Remove margin from the last element in the group */
+    margin-right: 0; 
 }
 
 .bookmark-text > span:nth-child(1){
@@ -149,7 +148,6 @@ div#admin > a {
 }
 
 .place-holder {
-    /* display: none;  */
     visibility: hidden;
 }
 
