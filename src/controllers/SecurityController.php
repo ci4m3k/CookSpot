@@ -90,7 +90,6 @@ class SecurityController extends AppController
             return $this->render('createaccount', ['messages' => ['Please provide proper password']]);
         }
 
-        // Generate a unique id for post
         $uniqueUserId = uniqid('', true);
 
         $user = new User($uniqueUserId, 1, $email, password_hash($password, PASSWORD_DEFAULT), $username);
@@ -136,7 +135,6 @@ class SecurityController extends AppController
         }
 
         $this->userRepository->updateUserPassword($user->getIdUser(), password_hash($new_password, PASSWORD_DEFAULT));
-        //var_dump($user->getIdUser(), password_hash($password, PASSWORD_DEFAULT));
 
         return $this->render('login', ['messages' => ['Your password got succesfully changed! ']]);
     }

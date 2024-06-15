@@ -12,7 +12,6 @@ class UserDetails {
     private $state;
     private $country;
 
-    // Constructor
     public function __construct(
         string $id_users_details = null,
         string $id_user = null,
@@ -37,7 +36,6 @@ class UserDetails {
         $this->country = $country;
     }
 
-    // Getters and Setters
     public function getIdUsersDetails(): string {
         return $this->id_users_details;
     }

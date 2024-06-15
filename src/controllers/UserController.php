@@ -45,11 +45,9 @@ class UserController extends AppController
 
         if ($this->isPost()) {
 
-            // Generate a unique id for users_details
             $unique_id_users_details = uniqid('', true);
             $id_user = $this->sessionInfo->getIdUserFromSession();
 
-            // Create a new UserDetails object 
             $user_details = new UserDetails(
                 $unique_id_users_details,
                 $id_user,
@@ -67,7 +65,6 @@ class UserController extends AppController
         
             $has_details = $this-> userDetailsRepository->isUserHasDetails($id_user);
             if(!$has_details){
-                // Add the user_details to the database
             $this->userDetailsRepository->addUserDetails($user_details);
 
             } else {
@@ -75,7 +72,6 @@ class UserController extends AppController
                 $this->userDetailsRepository->updateUserDetails($user_details, $id_user);
             }
 
-            // Render the user_details page with the new user_details data
             return $this->myprofile();
         }
 

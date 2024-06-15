@@ -116,7 +116,6 @@ class CategoryRepository extends Repository
         }
 
      
-        //var_dump($categories());
         foreach ($categories as $category) {
             $result[] = $category['id_post'];
         }

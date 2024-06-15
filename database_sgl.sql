@@ -55,12 +55,6 @@ CREATE TABLE "rating" (
 	"score" int NOT NULL CHECK(score BETWEEN -1 AND 1)
 );
 
-CREATE TABLE "rating" (
-	"id_user" varchar(30) NOT NULL,
-	"id_post" varchar(30) NOT NULL,
-	"score" int NOT NULL CHECK(score BETWEEN -1 AND 1)
-);
-
 CREATE TABLE "bookmarks" (
 	"id_user" varchar(30) NOT NULL,
 	"id_post" varchar(30) NOT NULL

@@ -18,22 +18,6 @@ class Post
     private $dislike;
     
 
-	// "id_post" serial NOT NULL,
-	// "id_user_owner" int NOT NULL,
-	// "title" varchar(255) NOT NULL,
-	// "description" text NOT NULL,
-	// "ingredients" text NOT NULL,
-	// "recipe" text NOT NULL,
-	// "image" varchar(255) NOT NULL,
-	// "prep_time" varchar(10) NOT NULL,
-	// "difficulty" varchar(10) NOT NULL,
-	// "number_of_servings" int NOT NULL,
-	// "created_at" varchar(20) NOT NULL,
-	// "like" int NOT NULL DEFAULT 0,
-	// "dislike" int NOT NULL DEFAULT 0,
-
-
-    // Constructor
     public function __construct(
         string $id_post,
         string $id_user_owner,
@@ -66,7 +50,6 @@ class Post
         $this->dislike = $dislike;
     }
 
-    // Getter and Setter for id_post
     public function getIdPost(): string {
         return $this->id_post;
     }
@@ -75,7 +58,6 @@ class Post
         $this->id_post = $id_post;
     }
 
-    // Getter and Setter for id_user_owner
     public function getIdUserOwner(): string {
         return $this->id_user_owner;
     }
@@ -84,7 +66,6 @@ class Post
         $this->id_user_owner = $id_user_owner;
     }
 
-    // Getter and Setter for user_owner
     public function getUserOwner(): string {
         return $this->user_owner;
     }
@@ -93,7 +74,7 @@ class Post
         $this->user_owner = $user_owner;
     }
 
-    // Getter and Setter for title
+
     public function getTitle(): string {
         return $this->title;
     }
@@ -102,7 +83,7 @@ class Post
         $this->title = $title;
     }
 
-    // Getter and Setter for description
+ 
     public function getDescription(): string {
         return $this->description;
     }
@@ -111,7 +92,6 @@ class Post
         $this->description = $description;
     }
 
-    // Getter and Setter for ingredients
     public function getIngredients(): string {
         return $this->ingredients;
     }
@@ -120,7 +100,6 @@ class Post
         $this->ingredients = $ingredients;
     }
 
-    // Getter and Setter for recipe
     public function getRecipe(): string {
         return $this->recipe;
     }
@@ -129,7 +108,6 @@ class Post
         $this->recipe = $recipe;
     }
 
-    // Getter and Setter for image
     public function getImage(): string {
         return $this->image;
     }
@@ -138,7 +116,6 @@ class Post
         $this->image = $image;
     }
 
-    // Getter and Setter for prep_time
     public function getPrepTime(): string {
         return $this->prep_time;
     }
@@ -147,7 +124,6 @@ class Post
         $this->prep_time = $prep_time;
     }
 
-    // Getter and Setter for difficulty
     public function getDifficulty(): string {
         return $this->difficulty;
     }
@@ -156,7 +132,6 @@ class Post
         $this->difficulty = $difficulty;
     }
 
-    // Getter and Setter for number_of_servings
     public function getNumberOfServings(): int {
         return $this->number_of_servings;
     }
@@ -165,7 +140,6 @@ class Post
         $this->number_of_servings = $number_of_servings;
     }
 
-    // Getter and Setter for created_at
     public function getCreatedAt(): string {
         return $this->created_at;
     }
@@ -174,7 +148,6 @@ class Post
         $this->created_at = $created_at;
     }
 
-    // Getter and Setter for like
     public function getLike(): int {
         return $this->like;
     }
@@ -183,7 +156,6 @@ class Post
         $this->like = $like;
     }
 
-    // Getter and Setter for dislike
     public function getDislike(): int {
         return $this->dislike;
     }

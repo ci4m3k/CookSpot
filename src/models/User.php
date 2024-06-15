@@ -7,7 +7,6 @@ class User
     private $password;
     private $username;
 
-    // Constructor
     public function __construct(
         string $id_user,
         int $id_role,
@@ -22,7 +21,6 @@ class User
         $this->username = $username;
     }
 
-    // Getter and Setter for id_user
     public function getIdUser(): string {
         return $this->id_user;
     }
@@ -31,7 +29,6 @@ class User
         $this->id_user = $id_user;
     }
 
-    // Getter and Setter for id_role
     public function getIdRole(): int {
         return $this->id_role;
     }
@@ -40,7 +37,6 @@ class User
         $this->id_role = $id_role;
     }
 
-    // Getter and Setter for email
     public function getEmail(): string {
         return $this->email;
     }
@@ -49,7 +45,6 @@ class User
         $this->email = $email;
     }
 
-    // Getter and Setter for password
     public function getPassword(): string {
         return $this->password;
     }
@@ -58,7 +53,6 @@ class User
         $this->password = $password;
     }
 
-    // Getter and Setter for username
     public function getUsername(): string {
         return $this->username;
     }

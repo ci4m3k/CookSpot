@@ -14,7 +14,6 @@ class Bookmark
     }
 
 
-    // Getter and Setter for id_post
     public function getIdPost(): string {
         return $this->id_post;
     }
@@ -23,7 +22,6 @@ class Bookmark
         $this->id_post = $id_post;
     }
 
-        // Getter and Setter for id_user
     public function getIdUser(): string {
         return $this->id_user;
     }

@@ -17,7 +17,6 @@ private $postRepository;
 
     public function explore() {
         $categories = $this->categoryRepository->getCategoriesList();
-        //$this->postRepository->getPostsByTitle("test");
         $this -> render('explore',['categories' => $categories] );
     }
 
@@ -40,9 +39,7 @@ private $postRepository;
             
             
         } else {
-            // Handle the case where 'id' is not present in the URL
             echo "Post ID is not specified.";
-            //$this -> render('post-page');
         }
     }
 

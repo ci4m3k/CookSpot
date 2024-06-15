@@ -17,7 +17,6 @@ class Rating
     }
 
 
-    // Getter and Setter for id_post
     public function getIdPost(): string {
         return $this->id_post;
     }
@@ -26,7 +25,6 @@ class Rating
         $this->id_post = $id_post;
     }
 
-        // Getter and Setter for id_user
     public function getIdUser(): string {
         return $this->id_user;
     }
@@ -35,7 +33,6 @@ class Rating
         $this->id_user = $id_user;
     }
 
-    // Getter and Setter for score
     public function getScore(): int {
         return $this->score;
     }

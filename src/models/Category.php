@@ -16,7 +16,6 @@ class Category
     }
 
 
-    // Getter and Setter for id_category
     public function getIdCategory(): int {
         return $this->id_category;
     }
@@ -25,7 +24,6 @@ class Category
         $this->id_category = $id_category;
     }
 
-    // Getter and Setter for category_name
     public function getCategoryName(): string {
         return $this->category_name;
     }
@@ -34,7 +32,6 @@ class Category
         $this->category_name = $category_name;
     }
 
-    // Getter and Setter for category_desc
     public function getCategoryDesc(): string {
         return $this->category_desc;
     }
