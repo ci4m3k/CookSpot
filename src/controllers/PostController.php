@@ -70,7 +70,7 @@ class PostController extends AppController
             }
 
             if ($hasNull) {
-                return $this->render('add-post', ['messages' => $this->$message, 'categories' => $categories]);  
+                return $this->render('add-post', ['messages' => $message, 'categories' => $categories]);  
             }
 
 

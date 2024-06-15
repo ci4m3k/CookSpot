@@ -6,6 +6,7 @@ require_once __DIR__.'/../repository/PostRepository.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 require_once __DIR__.'/../repository/UserDetailsRepository.php';
 require_once __DIR__.'/../services/SessionInfo.php';
+require_once __DIR__.'/../services/Validator.php';
 
 
 class UserController extends AppController
@@ -16,11 +17,13 @@ class UserController extends AppController
     private $userRepository;
     private $userDetailsRepository;
     private $sessionInfo;
+    private $validator;
 
     public function __construct()
     {
         parent::__construct();
         $this->sessionInfo = new SessionInfo();
+        $this->validator = new Validator();
         $this->postRepository = new PostRepository();
         $this->userRepository = new UserRepository();
         $this->userDetailsRepository = new UserDetailsRepository();
@@ -77,7 +80,7 @@ class UserController extends AppController
         }
 
 
-        return $this->render('add-details', ['messages' => $this->message,]);       
+        return $this->render('add-details');       
     }
 
     public function changeusername() 
@@ -85,12 +88,17 @@ class UserController extends AppController
 
         if ($this->isPost()) {
             $id_user = $this->sessionInfo->getIdUserFromSession();
-            $this->userRepository->updateUsername($id_user, $_POST['username']);
-            return $this->myprofile();
+            $username = $_POST['username'];
+            $valid_user = $this->validator->isEmpty($username);
+            if(!$valid_user){
+                $this->userRepository->updateUsername($id_user, $username);
+                return $this->myprofile();
+            } else {
+                return $this->render('change-username', ['messages' => ['Username is empty']]);
+            }
+            
         }
-
-
-        return $this->render('change-username', ['messages' => $this->message,]);       
+        return $this->render('change-username', ['messages' => ['']]);       
     }
 
     public function changeemail() 
@@ -98,11 +106,18 @@ class UserController extends AppController
 
         if ($this->isPost()) {
             $id_user = $this->sessionInfo->getIdUserFromSession();
-            $this->userRepository->updateEmail($id_user, $_POST['email']);
+            $email = $_POST['email'];
+            $valid_email = $this->validator->validateEmail($email);
+            
+            if(!$valid_email){
+                $this->userRepository->updateEmail($id_user, $email);
+                return $this->myprofile();
+            } else {
+                return $this->render('change-email', ['messages' => ['Wrong Email']]);
+            }   
             return $this->myprofile();
         }
-
-        return $this->render('change-email', ['messages' => $this->message,]);       
+        return $this->render('change-email');       
     }
 
 
