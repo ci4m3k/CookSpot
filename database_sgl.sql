@@ -49,6 +49,11 @@ CREATE TABLE "posts" (
 	PRIMARY KEY("id_post")
 );
 
+CREATE TABLE "rating" (
+	"id_user" varchar(30) NOT NULL,
+	"id_post" varchar(30) NOT NULL,
+	"score" int NOT NULL CHECK(score BETWEEN -1 AND 1)
+);
 
 CREATE TABLE "rating" (
 	"id_user" varchar(30) NOT NULL,
@@ -79,6 +84,12 @@ CREATE TABLE "roles" (
 	PRIMARY KEY("id_role")
 );
 
+CREATE TABLE logs (
+    id_user VARCHAR(30),
+    log_date DATE DEFAULT NULL
+);
+
+
 ALTER TABLE "users"
 ADD FOREIGN KEY("id_role") REFERENCES "roles"("id_role")
 ON UPDATE CASCADE ON DELETE CASCADE;
@@ -106,3 +117,50 @@ ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE "users_details"
 ADD FOREIGN KEY("id_user") REFERENCES "users"("id_user")
 ON UPDATE CASCADE ON DELETE CASCADE;
+
+CREATE OR REPLACE FUNCTION set_log_date()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.log_date := CURRENT_DATE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER before_insert_logs
+BEFORE INSERT ON logs
+FOR EACH ROW
+EXECUTE FUNCTION set_log_date();
+
+
+CREATE VIEW user_logs AS
+SELECT 
+    logs.id_user,
+    users.username,
+	users.email,
+    logs.log_date
+FROM 
+    logs
+JOIN 
+    users ON logs.id_user = users.id_user;
+
+
+CREATE VIEW users_with_details AS
+SELECT
+    u.id_user,
+    u.id_role,
+    u.email,
+    u.username,
+    ud.id_users_details,
+    ud.first_name,
+    ud.last_name,
+    ud.city,
+    ud.street_name,
+    ud.street_address,
+    ud.postal_code,
+    ud.state,
+    ud.country
+FROM
+    users u
+JOIN
+    users_details ud ON u.id_user = ud.id_user;

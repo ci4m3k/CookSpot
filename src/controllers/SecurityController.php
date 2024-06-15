@@ -50,6 +50,8 @@ class SecurityController extends AppController
 
         $_SESSION['user'] = serialize($user);
 
+        $this->userRepository->createLog($user->getIdUser());
+
         $this->redirect('mainpage');
     }
 

@@ -155,6 +155,21 @@ class UserRepository extends Repository
         ]);
     }
 
+    public function createLog($id_user){
+        $stmt = $this->database->connect()->prepare('
+        INSERT INTO logs (
+        id_user
+        )
+        VALUES (?)
+    ');
 
-}
+    $stmt->execute([
+        $id_user
+    ]);
+    }
+    
+} 
+
+
+
 
