@@ -51,6 +51,7 @@ class PostController extends AppController
                 'title',
                 'description',
                 'ingredients',
+                'categories',
                 'recipe',
                 'prep_time',
                 'difficulty',
@@ -62,7 +63,7 @@ class PostController extends AppController
             foreach ($requiredKeys as $key) {
                 if (!isset($_POST[$key]) || $_POST[$key] === '') {
                     $hasNull = true;
-                    $message[] = ($key . " is null");
+                    $message[] = ($key . " is empty");
                 }
             }
 
