@@ -11,14 +11,12 @@ require_once __DIR__.'/../services/SessionInfo.php';
 class RatingController extends AppController{
 
     private $ratingRepository;
-    private $postRepository;
     private $sessionInfo;
 
     public function __construct()
     {
         parent::__construct();
         $this->ratingRepository = new RatingRepository();
-        $this->postRepository = new PostRepository();
         $this->sessionInfo = new SessionInfo();
     }
 

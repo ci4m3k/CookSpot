@@ -37,13 +37,11 @@ class PostController extends AppController
         $message = [];
         $categories = $this->categoryRepository->getCategoriesList();
         if ($this->isPost() && is_uploaded_file($_FILES['image']['tmp_name']) && $this->validate($_FILES['image'])) {
-            // Get the original file extension
+
             $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             
-            // Generate a unique name for the file
             $uniqueFileName = uniqid('', true) . '.' . $fileExtension;
             
-            // Move the uploaded file to the destination directory with the new unique name
             move_uploaded_file(
                 $_FILES['image']['tmp_name'],          
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$uniqueFileName
@@ -61,7 +59,6 @@ class PostController extends AppController
 
             $hasNull = false;
 
-            // Iterate over the required keys and check for null values
             foreach ($requiredKeys as $key) {
                 if (!isset($_POST[$key]) || $_POST[$key] === '') {
                     $hasNull = true;
@@ -74,7 +71,6 @@ class PostController extends AppController
             }
 
 
-            // Generate a unique id for post
             $uniquePostId = uniqid('', true);
 
             $id_user_owner = $this->sessionInfo->getIdUserFromSession();
@@ -84,7 +80,6 @@ class PostController extends AppController
             date_default_timezone_set('Europe/Warsaw');
             $created_at = date('d-m-Y');
 
-            // Create a new Post object with the new file name
             $new_post = new Post(
                 $uniquePostId,
                 $id_user_owner,
@@ -102,14 +97,10 @@ class PostController extends AppController
                 0
             );
             
-            // Add the post to the database
             $this->postRepository->addPost($new_post);
 
             $this->categoryRepository->addCategories($new_post->getIdPost(), $_POST['categories']);
 
-            // Render the post page with the new post data
-            //return $this->render('post-page', ['messages' => $this->message, 'post' => $new_post]);
-            //$this->render('post-page', ['messages' => $this->message, 'id' => $new_post->getIdPost()]);
             return $this->postpageFromIdPost($new_post->getIdPost());
 
         }
@@ -151,13 +142,11 @@ class PostController extends AppController
             $post = $this->postRepository->getPost($id_post);
             $book = $this->bookmarkRepository->isBookmarkedByUser($id_user, $id_post);
             $category = $this->categoryRepository->getPostCategoriesList($id_post);
+            if($post == false){
+                return $this->render('error');
+            }
             return $this->render('post-page', ['messages' => $this->message, 'post' => $post, 'rate' => $rate, 'book' => $book, 'category' => $category]);
             
-            
-        } else {
-            // Handle the case where 'id' is not present in the URL
-            echo "Post ID is not specified.";
-            //$this -> render('post-page');
         }
     }
     
@@ -263,13 +252,6 @@ class PostController extends AppController
         var_dump('end dislike');
 
     }
-
-
-
-
-
-
-
 
 }
 

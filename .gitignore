@@ -3,3 +3,4 @@ tests/models/UserTest.php
 phpunit.xml
 phpunit.phar
 phpunit.phar
+/.vscode

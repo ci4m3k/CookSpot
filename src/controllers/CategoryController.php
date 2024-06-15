@@ -28,14 +28,14 @@ private $postRepository;
             $posts_id = $this->categoryRepository->getPostsListFromIdCategory($id_category);
             
             if($posts_id == false){
-                $this -> render('mainpage',['posts' => $posts, 'message' => 'Ups... Look like it\'s nothing here '] );
+                return $this -> render('mainpage',['posts' => $posts, 'message' => 'Ups... Look like it\'s nothing here '] );
             }
             
             foreach($posts_id as $id_post) {
                 $posts[] = $this->postRepository->getPost($id_post);
             }
 
-            $this -> render('mainpage',['posts' => $posts] );
+             return $this -> render('mainpage',['posts' => $posts] );
             
             
         } else {

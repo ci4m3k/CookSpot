@@ -43,7 +43,7 @@ class BookmarkController extends AppController{
             var_dump('add book');
         } else {
             $this->bookmarkRepository->removeBookmark($bookmark);
-            var_dump('remuve book');
+            var_dump('remove book');
         }
         
 

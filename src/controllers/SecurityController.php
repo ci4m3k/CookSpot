@@ -96,7 +96,7 @@ class SecurityController extends AppController
 
         $this->userRepository->addUser($user);
 
-        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+        return $this->render('login', ['messages' => ['You\'ve been successfully registered!']]);
     }
 
     public function logout(): void
@@ -131,12 +131,12 @@ class SecurityController extends AppController
          }
        
         if ($new_password !== $conf_password) {
-            return $this->render('change-password', ['messages' => ["Your conformation password dosen't match your new password"]]);
+            return $this->render('change-password', ['messages' => ["Your conformation password doesn't match your new password"]]);
         }
 
         $this->userRepository->updateUserPassword($user->getIdUser(), password_hash($new_password, PASSWORD_DEFAULT));
 
-        return $this->render('login', ['messages' => ['Your password got succesfully changed! ']]);
+        return $this->render('login', ['messages' => ['Your password got successfully changed! ']]);
     }
 
 
