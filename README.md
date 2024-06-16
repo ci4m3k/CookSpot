@@ -1,4 +1,4 @@
-# ZwierzakSzukaDomu
+# CookSpot
 
 Welcome to CookSpot, the web app for all your culinary adventures! Whether you're an amateur home cook or a seasoned chef, CookSpot is designed to cater to your every cooking need.
 
@@ -98,7 +98,7 @@ After the containers are up and running, you can access the application through 
 ### Login Page
 
 :-------------------------:|:-------------------------:
-![Login page](screenshots/login2.png)  |  ![login mobile page](demo_images/login1.png)
+![Login page](screenshots/login2.png)  |  ![login mobile page](screenshots/login1.png)
 
 
 
