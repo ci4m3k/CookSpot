@@ -9,9 +9,7 @@ Welcome to CookSpot, the web app for all your culinary adventures! Whether you'r
 3. [Database Design and Structure](#database-design-and-structure)
 4. [Design Patterns](#design-patterns)
 5. [Installation](#installation)
-6. [Usage](#usage)
-7. [Contributing](#contributing)
-8. [License](#license)
+6. [Usage Preview](#usage-preview)
 
 
 ## Features
@@ -128,7 +126,4 @@ Desktop | Mobile
 
 
 
-## License
-
-This project is licensed under the MIT License
 
