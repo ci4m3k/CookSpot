@@ -105,7 +105,7 @@ Desktop | Mobile
 
 Desktop | Mobile
 :-------------------------:|:-------------------------:
-![Main page](mainpage/login2.png)  |  ![Main page mobile](mainpage/login1.png)
+![Main page](screenshots/mainpage1.png)  |  ![Main page mobile](screenshots/mainpage1.png)
 
 
 
