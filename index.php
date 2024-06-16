@@ -47,7 +47,7 @@ if(isset($_SESSION['user'])){
     Routing::get('like', 'PostController');
     Routing::get('dislike', 'PostController');
     Routing::get('bookmarkpost', 'BookmarkController');
-
+    Routing::get('error','DefaultController');
 }
 
 if(isAdmin()){
@@ -60,7 +60,7 @@ Routing::get('', 'DefaultController');
 Routing::get('index', 'DefaultController');
 Routing::post('login', 'SecurityController');
 Routing::post('createaccount', 'SecurityController');
-Routing::get('error','DefaultController');
+
 
 Routing::run($path);
 

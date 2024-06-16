@@ -8,8 +8,11 @@ class ErrorController extends AppController
     private static ?ErrorController $instance = null;
 
     public function error(): void
-    {
-        $this->redirect('error');
+    {   
+        if(isset($_SESSION['user'])){
+            $this->render('error');
+        }
+        $this->redirect('');
     }
 
     public static function getInstance(): self
