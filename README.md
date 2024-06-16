@@ -97,9 +97,34 @@ After the containers are up and running, you can access the application through 
 ## Usage Preview
 ### Login Page
 
+Desktop | Mobile
 :-------------------------:|:-------------------------:
-![Login page](screenshots/login2.png)  |  ![login mobile page](screenshots/login1.png)
+![Login page](screenshots/login2.png)  |  ![Login page mobile](screenshots/login1.png)
 
+
+
+### Main Page
+
+Desktop | Mobile
+:-------------------------:|:-------------------------:
+![Main page](mainpage/login2.png)  |  ![Main page mobile](mainpage/login1.png)
+
+
+
+### Categories Page
+
+Desktop | Mobile
+:-------------------------:|:-------------------------:
+![Categories page](screenshots/categories2.png)  |  ![Categories page mobile](screenshots/categories1.png)
+
+
+
+
+### Post Page
+
+Desktop | Mobile
+:-------------------------:|:-------------------------:
+![Post page](screenshots/post-page2.png)  |  ![Post page mobile](screenshots/post-page1.png)
 
 
 
